@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom'
 
 import { AuthBg } from './components/AuthBg'
 
-export const LoginPage:FunctionComponent = () => {
+export const QuickRegistration:FunctionComponent = () => {
   return (
     <AuthBg>
-      login
-      <Link to={'/registration'}>
-        reg
+      quick reg
+      <Link to={'/login'}>
+        login
       </Link>
     </AuthBg>
   )

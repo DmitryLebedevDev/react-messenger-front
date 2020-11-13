@@ -1,6 +1,7 @@
-import React, { PropsWithChildren } from 'react'
-import { makeStyles } from '@material-ui/core/styles';
-import mountainsImage from '../../../images/mountain-3351654_1920.jpg';
+import React, { FunctionComponent } from 'react'
+import { makeStyles } from '@material-ui/core/styles'
+
+import mountainsImage from '../../../images/mountain-3351654_1920.jpg'
 
 const useStyles = makeStyles({
   bgImage: ({urlImage}:{urlImage:string}) => ({
@@ -12,8 +13,8 @@ const useStyles = makeStyles({
     backgroundImage: `url(${urlImage})`
   })
 })
-export default function AuthBg({children}: PropsWithChildren<any>) {
-  const classes = useStyles({urlImage: mountainsImage});
+export const AuthBg:FunctionComponent = ({children}) => {
+  const classes = useStyles({urlImage: mountainsImage})
 
   return (
     <div className={classes.bgImage}>

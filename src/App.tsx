@@ -1,8 +1,9 @@
-import React from 'react';
-import AuthContainer from './pages/auth/AuthContainer';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import React, { FunctionComponent } from 'react'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
-function App() {
+import { AuthContainer } from './pages/auth/AuthContainer'
+
+const App:FunctionComponent = () => {
   console.log("APP RERENDER");
 
   return (
@@ -12,7 +13,7 @@ function App() {
   );
 }
 
-const AppWithHocs = () => (
+const AppWithHocs:FunctionComponent = () => (
   <BrowserRouter>
     <App/>
   </BrowserRouter>
