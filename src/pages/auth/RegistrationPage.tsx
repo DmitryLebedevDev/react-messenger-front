@@ -1,15 +1,13 @@
-import React from 'react'
+import React, { FunctionComponent } from 'react'
 import { Link } from 'react-router-dom'
 
-import { AuthBg } from './components/AuthBg'
-
-export const RegistrationPage = () => {
+export const RegistrationPage:FunctionComponent = () => {
   return (
-    <AuthBg>
+    <>
       reg
       <Link to={'/login'}>
         login
       </Link>
-    </AuthBg>
+    </>
   )
 }

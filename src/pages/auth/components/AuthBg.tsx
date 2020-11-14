@@ -7,6 +7,9 @@ const useStyles = makeStyles({
   bgImage: ({urlImage}:{urlImage:string}) => ({
     width: '100%',
     height: '100vh',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
     backgroundPosition: 'center',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
