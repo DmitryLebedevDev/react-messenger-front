@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { Formik, Form, Field } from 'formik'
 
 import {FormInputInitInFormikField} from './components/FormInput'
+import { FormHeader } from './components/FormHeader'
 
 export const LoginPage:FunctionComponent = () => {
   return (
@@ -13,20 +14,23 @@ export const LoginPage:FunctionComponent = () => {
       >
         {({ isSubmitting }) => (
           <Form>
+            <FormHeader variant="login"/>
             <Field name="email">
               {FormInputInitInFormikField({
                 variant:"outlined",
                 size:"small",
-                fullWidth: true,
-                autoComplete: "off"
+                fullWidth:true,
+                autoComplete:"off",
+                label:"Email"
               })}
             </Field>
             <Field name="password">
               {FormInputInitInFormikField({
                 variant:"outlined",
                 size:"small",
-                fullWidth: true,
-                autoComplete: "off"
+                fullWidth:true,
+                autoComplete:"off",
+                label:"Password"
               })}
             </Field>
           </Form>
