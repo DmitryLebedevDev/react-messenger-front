@@ -29,17 +29,17 @@ export const FormHeader = ({variant}: Iprops) => {
   switch(variant) {
     case 'login':
       stylesParams = {
-        color: ''
-      }
-      break;
-    case 'quickRegistrationPage':
-      stylesParams = {
-        color: ''
+        color: '#0078CE'
       }
       break;
     case 'registration':
       stylesParams = {
-        color: ''
+        color: '#E3004E'
+      }
+      break;
+    case 'quickRegistrationPage':
+      stylesParams = {
+        color: '#00c853'
       }
     break;
   }
@@ -47,7 +47,9 @@ export const FormHeader = ({variant}: Iprops) => {
   const classes = useStyles(stylesParams)
   return (
     <div className={classes.wrap}>
-      
+      <div className={classes.content}>
+        
+      </div>
     </div>
   )
 }

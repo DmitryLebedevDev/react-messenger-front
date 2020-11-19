@@ -1,11 +1,20 @@
 import React, { FunctionComponent } from 'react'
 import { Link } from 'react-router-dom'
 import { Formik, Form, Field } from 'formik'
+import { makeStyles } from '@material-ui/core'
 
 import {FormInputInitInFormikField} from './components/FormInput'
 import { FormHeader } from './components/FormHeader'
 
+const useStyles = makeStyles({
+  formFields: {
+    padding: '10px 0px'
+  }
+})
+
 export const LoginPage:FunctionComponent = () => {
+  const classes = useStyles();
+
   return (
     <>
       <Formik
@@ -15,24 +24,26 @@ export const LoginPage:FunctionComponent = () => {
         {({ isSubmitting }) => (
           <Form>
             <FormHeader variant="login"/>
-            <Field name="email">
-              {FormInputInitInFormikField({
-                variant:"outlined",
-                size:"small",
-                fullWidth:true,
-                autoComplete:"off",
-                label:"Email"
-              })}
-            </Field>
-            <Field name="password">
-              {FormInputInitInFormikField({
-                variant:"outlined",
-                size:"small",
-                fullWidth:true,
-                autoComplete:"off",
-                label:"Password"
-              })}
-            </Field>
+            <div className={classes.formFields}>
+              <Field name="email">
+                {FormInputInitInFormikField({
+                  variant:"outlined",
+                  size:"small",
+                  fullWidth:true,
+                  autoComplete:"off",
+                  label:"Email"
+                })}
+              </Field>
+              <Field name="password">
+                {FormInputInitInFormikField({
+                  variant:"outlined",
+                  size:"small",
+                  fullWidth:true,
+                  autoComplete:"off",
+                  label:"Password"
+                })}
+              </Field>
+            </div>
           </Form>
         )}
       </Formik>
