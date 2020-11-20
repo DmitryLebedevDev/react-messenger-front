@@ -3,13 +3,12 @@ import { Link } from 'react-router-dom'
 import { Formik, Form, Field } from 'formik'
 import { makeStyles } from '@material-ui/core'
 
-import {FormInputInitInFormikField} from './components/FormInput'
+import { FormInputInitInFormikField } from './components/FormInput'
 import { FormHeader } from './components/FormHeader'
+import { commonAuthStyles } from './styles/common'
 
 const useStyles = makeStyles({
-  formFields: {
-    padding: '10px 0px'
-  }
+  ...commonAuthStyles
 })
 
 export const LoginPage:FunctionComponent = () => {
@@ -31,7 +30,7 @@ export const LoginPage:FunctionComponent = () => {
                   size:"small",
                   fullWidth:true,
                   autoComplete:"off",
-                  label:"Email"
+                  label:"Email",
                 })}
               </Field>
               <Field name="password">
