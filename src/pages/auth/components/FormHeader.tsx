@@ -1,11 +1,14 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core'
+import { Lock } from '@material-ui/icons';
+import AddIcon from '@material-ui/icons/Add';
 
 interface Iprops {
   variant: 'login' | 'registration' | 'quickRegistrationPage'
 }
 interface StyleParams {
-  color: string
+  color: string,
+  iconColor?: string
 }
 
 const useStyles = makeStyles({
@@ -13,14 +16,15 @@ const useStyles = makeStyles({
     display: 'flex',
     justifyContent: 'center',
   },
-  content:({color}: {color: string}) => ({
+  content:({color,iconColor='white'}: StyleParams) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     width: 40,
     height: 40,
     borderRadius: 40,
-    background: color
+    background: color,
+    color: iconColor
   })
 })
 
@@ -29,12 +33,12 @@ export const FormHeader = ({variant}: Iprops) => {
   switch(variant) {
     case 'login':
       stylesParams = {
-        color: '#0078CE'
+        color: '#0078CE',
       }
       break;
     case 'registration':
       stylesParams = {
-        color: '#E3004E'
+        color: '#0078CE',
       }
       break;
     case 'quickRegistrationPage':
@@ -48,7 +52,11 @@ export const FormHeader = ({variant}: Iprops) => {
   return (
     <div className={classes.wrap}>
       <div className={classes.content}>
-        
+        {variant === 'login' ?
+         <Lock/>
+         :
+         <AddIcon/>
+        }
       </div>
     </div>
   )
