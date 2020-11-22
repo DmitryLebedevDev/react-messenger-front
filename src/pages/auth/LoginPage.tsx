@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import { Link } from 'react-router-dom'
 import { Formik, Form, Field } from 'formik'
-import { makeStyles } from '@material-ui/core'
+import { makeStyles, Button } from '@material-ui/core'
 
 import { FormInputInitInFormikField } from './components/FormInput'
 import { FormHeader } from './components/FormHeader'
@@ -46,8 +46,15 @@ export const LoginPage:FunctionComponent = () => {
           </Form>
         )}
       </Formik>
+      <Link to={'/quickRegistration'}>
+        <Button style={{color: '#43a047'}}>
+          Quick registration
+        </Button>
+      </Link>
       <Link to={'/registration'}>
-        reg
+        <Button color="primary">
+          reg
+        </Button>
       </Link>
     </>
   )

@@ -43,7 +43,7 @@ export const FormHeader = ({variant}: Iprops) => {
       break;
     case 'quickRegistrationPage':
       stylesParams = {
-        color: '#00c853'
+        color: '#4caf50'
       }
     break;
   }
