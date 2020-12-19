@@ -13,6 +13,7 @@
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
     "@types/socket.io-client": "^1.4.34",
+    "axios": "^0.21.0",
     "classnames": "^2.2.6",
     "effector": "^21.6.0",
     "effector-react": "^21.0.8",
