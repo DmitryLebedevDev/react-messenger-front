@@ -13,9 +13,19 @@ const App:FunctionComponent = () => {
   );
 }
 
+const Auth:FunctionComponent = ({children}) => {
+  return (
+    <>
+      {children}
+    </>
+  );
+}
+
 const AppWithHocs:FunctionComponent = () => (
   <BrowserRouter>
-    <App/>
+    <Auth>
+      <App/>
+    </Auth>
   </BrowserRouter>
 )
 
