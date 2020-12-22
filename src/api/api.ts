@@ -17,8 +17,8 @@ const getDataOfRequest = <T>(response: Promise<AxiosResponse<T>>) => (
   response.then(info => info.data)
 )
 
-export const authUser = () => getDataOfRequest(api.get<Iuser>('auth')) 
+export const authUserReq = () => getDataOfRequest(api.get<Iuser>('auth')) 
 
-export const quickRegistration = (data: IquickRegistrationData) => {
+export const quickRegistrationReq = (data: IquickRegistrationData) => {
 
 }
