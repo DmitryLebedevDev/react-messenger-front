@@ -1,6 +1,6 @@
 import { $isAuth, authFx } from './'
 import { authUserReq, changeAuthTokenForRequests } from '../../api/api'
-import { setUserEvent } from '../user/index'
+import { setUserEvent, logoutUserEvent } from '../user'
 
 authFx.use(async () => {
   const jwtToken = localStorage.getItem('jwtToken')
@@ -14,3 +14,4 @@ authFx.use(async () => {
 
 $isAuth.on(authFx.done, () => true)
 $isAuth.on(authFx.fail, () => false)
+$isAuth.on(logoutUserEvent, () => false)
