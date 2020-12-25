@@ -1,4 +1,4 @@
-import { createEffect, createEvent, createStore } from "effector"
+import { createEffect, createStore } from "effector"
 
 export const authFx = createEffect<void,void,Error>()
 

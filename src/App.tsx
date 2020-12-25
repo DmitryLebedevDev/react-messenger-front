@@ -1,7 +1,6 @@
-import { useStore } from 'effector-react';
 import React, { FunctionComponent } from 'react'
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
-import { $isAuth } from './models/auth';
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { AuthGuard } from './common/components/hoc/Auth';
 
 import { AuthContainer } from './pages/auth/AuthContainer'
 
@@ -10,22 +9,13 @@ const App:FunctionComponent = () => {
 
   return (
     <Switch>
+      <Route>
+        <AuthGuard>
+          <>test</>
+        </AuthGuard>
+      </Route>
       <Route component={AuthContainer}/>
     </Switch>
-  );
-}
-
-const Auth:FunctionComponent = ({children}) => {
-  const isAuth = useStore($isAuth);
-
-  if(!isAuth) {
-    return <Redirect to='/login'/>
-  }
-
-  return (
-    <>
-      {children}
-    </>
   );
 }
 
