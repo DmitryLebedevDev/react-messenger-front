@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import { Route } from 'react-router-dom'
+import { Redirect, Route } from 'react-router-dom'
 
 import { LoginPage } from './LoginPage'
 import { RegistrationPage } from './RegistrationPage'
@@ -11,9 +11,10 @@ export const AuthContainer:FunctionComponent = () => {
   return (
     <AuthBg content="center">
       <WhiteWindow>
-        <Route path='/login' component={LoginPage}/>
-        <Route path='/quickRegistration' component={QuickRegistrationPage}/>
-        <Route path='/registration' component={RegistrationPage}/>
+        <Route exact path='/login' component={LoginPage}/>
+        <Route exact path='/quickRegistration' component={QuickRegistrationPage}/>
+        <Route exact path='/registration' component={RegistrationPage}/>
+        <Redirect to='/login'/>
       </WhiteWindow>
     </AuthBg>
   )

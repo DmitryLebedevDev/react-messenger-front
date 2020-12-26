@@ -1,22 +1,13 @@
 import React, { FunctionComponent } from 'react'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
-import { AuthGuard } from './common/components/hoc/Auth';
+import { BrowserRouter } from 'react-router-dom'
 
-import { AuthContainer } from './pages/auth/AuthContainer'
+import { useRoutes } from './Routes';
 
 const App:FunctionComponent = () => {
   console.log("APP RERENDER");
+  const routes = useRoutes(false);
 
-  return (
-    <Switch>
-      <Route>
-        <AuthGuard>
-          <>test</>
-        </AuthGuard>
-      </Route>
-      <Route component={AuthContainer}/>
-    </Switch>
-  );
+  return routes;
 }
 
 const AppWithHocs:FunctionComponent = () => (
