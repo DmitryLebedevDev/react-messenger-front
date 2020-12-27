@@ -3,7 +3,7 @@ import { Redirect, Route } from 'react-router-dom'
 
 import { LoginPage } from './LoginPage'
 import { RegistrationPage } from './RegistrationPage'
-import { AuthBg } from './components/AuthBg';
+import { AuthBg } from './components/AuthBg'
 import { QuickRegistrationPage } from './QuickRegistrationPage'
 import { WhiteWindow } from './components/WhiteWindow'
 

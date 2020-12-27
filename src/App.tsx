@@ -1,13 +1,17 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useEffect } from 'react'
 import { BrowserRouter } from 'react-router-dom'
+import { useStore } from 'effector-react'
 
-import { useRoutes } from './Routes';
+import { $isAuth, authFx } from './models/auth'
+import { useRoutes } from './Routes'
 
 const App:FunctionComponent = () => {
-  console.log("APP RERENDER");
-  const routes = useRoutes(false);
+  useEffect(() => {authFx()}, [])
+  const isAuth = useStore($isAuth)
 
-  return routes;
+  const routes = useRoutes(isAuth)
+
+  return routes
 }
 
 const AppWithHocs:FunctionComponent = () => (
@@ -16,4 +20,4 @@ const AppWithHocs:FunctionComponent = () => (
   </BrowserRouter>
 )
 
-export default AppWithHocs;
+export default AppWithHocs
