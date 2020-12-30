@@ -26,19 +26,11 @@ export const LoginPage:FunctionComponent = () => {
             <div className={classes.formFields}>
               <Field name="email">
                 {FormInputInitInFormikField({
-                  variant:"outlined",
-                  size:"small",
-                  fullWidth:true,
-                  autoComplete:"off",
                   label:"Email",
                 })}
               </Field>
               <Field name="password">
                 {FormInputInitInFormikField({
-                  variant:"outlined",
-                  size:"small",
-                  fullWidth:true,
-                  autoComplete:"off",
                   label:"Password"
                 })}
               </Field>
