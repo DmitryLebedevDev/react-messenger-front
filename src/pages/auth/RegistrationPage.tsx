@@ -8,7 +8,14 @@ import { FormHeader } from './components/FormHeader'
 import { FormInputInitInFormikField } from './components/FormInput'
 
 const useStyles = makeStyles({
-  ...commonAuthStyles
+  ...commonAuthStyles,
+  compareFields: {
+    display: 'flex',
+    '& div + div': {
+      marginTop: '0px',
+      marginLeft: '10px',
+    }
+  }
 })
 
 export const RegistrationPage:FunctionComponent = () => {
@@ -30,16 +37,19 @@ export const RegistrationPage:FunctionComponent = () => {
         <Form>
           <FormHeader variant="registration"/>
           <div className={classes.formFields}>
-            <Field name="firstName">
-              {FormInputInitInFormikField({
-                label:"First name"
-              })}
-            </Field>
-            <Field name="lastName">
-              {FormInputInitInFormikField({
-                label:"Last name"
-              })}
-            </Field>
+            <div className={classes.compareFields}>
+              <Field name="firstName">
+                {FormInputInitInFormikField({
+                  label:"First name"
+                })}
+              </Field>
+              <Field name="lastName">
+                {FormInputInitInFormikField({
+                  label:"Last name"
+                })}
+              </Field>
+            </div>
+            
             <Field name="email">
               {FormInputInitInFormikField({
                 label:"Email"

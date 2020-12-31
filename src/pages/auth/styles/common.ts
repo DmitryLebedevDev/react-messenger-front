@@ -1,6 +1,6 @@
-import { Styles } from "@material-ui/core/styles/withStyles";
+import { StyleRules } from "@material-ui/core/styles/withStyles";
 
-export const commonAuthStyles: Styles<any,any> = {
+const css = {
   formFields: {
     padding: '10px 0px',
     '& div + div': {
@@ -8,3 +8,5 @@ export const commonAuthStyles: Styles<any,any> = {
     }
   },
 }
+
+export const commonAuthStyles: StyleRules<keyof typeof css> = css
