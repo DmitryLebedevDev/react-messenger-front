@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import { Link } from 'react-router-dom'
-import { makeStyles } from '@material-ui/core'
+import { Button, makeStyles } from '@material-ui/core'
 import { Field, Form, Formik } from 'formik'
 
 import { commonAuthStyles } from './styles/common'
@@ -15,7 +15,7 @@ const useStyles = makeStyles({
       marginTop: '0px',
       marginLeft: '10px',
     }
-  }
+  },
 })
 
 export const RegistrationPage:FunctionComponent = () => {
@@ -68,9 +68,13 @@ export const RegistrationPage:FunctionComponent = () => {
           </div>
         </Form>
       </Formik>
-      <Link to={'/login'}>
-        login
-      </Link>
+      <div className={classes.formButtons}>
+        <Link to={'/login'}>
+          <Button variant="contained" color="primary">
+            Sign up
+          </Button>
+        </Link>
+      </div>
     </>
   )
 }

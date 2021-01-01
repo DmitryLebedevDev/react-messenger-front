@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import { makeStyles } from '@material-ui/core'
+import { Button, makeStyles } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 
 import { commonAuthStyles } from './styles/common'
@@ -18,9 +18,13 @@ export const QuickRegistrationPage:FunctionComponent = () => {
       <div className={classes.formFields}>
         quickRegistrationPage
       </div>
-      <Link to={'/login'}>
-        login
-      </Link>
+      <div className={classes.formButtons}>
+        <Link to={'/login'}>
+          <Button variant='contained' color='primary'>
+            Sign up
+          </Button>
+        </Link>
+      </div>
     </>
   )
 }

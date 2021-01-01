@@ -38,16 +38,21 @@ export const LoginPage:FunctionComponent = () => {
           </Form>
         )}
       </Formik>
-      <Link to={'/quickRegistration'}>
-        <Button style={{color: '#43a047'}}>
-          Quick registration
+      <div className={classes.formButtons}>
+        <Button variant='contained' color='primary'>
+          Log in
         </Button>
-      </Link>
-      <Link to={'/registration'}>
-        <Button color="primary">
-          reg
-        </Button>
-      </Link>
+        <Link to={'/quickRegistration'}>
+          <Button variant='contained' style={{background:'#43a047', color: 'white'}}>
+            Quick registration
+          </Button>
+        </Link>
+        <Link to={'/registration'}>
+          <Button color="primary">
+            registration
+          </Button>
+        </Link>
+      </div>
     </>
   )
 }
