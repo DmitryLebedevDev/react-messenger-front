@@ -8,7 +8,11 @@ import { FormHeader } from './components/FormHeader'
 import { commonAuthStyles } from './styles/common'
 
 const useStyles = makeStyles({
-  ...commonAuthStyles
+  ...commonAuthStyles,
+  greenButton: {
+    background:'#43a047',
+    color: 'white'
+  }
 })
 
 export const LoginPage:FunctionComponent = () => {
@@ -43,7 +47,7 @@ export const LoginPage:FunctionComponent = () => {
           Log in
         </Button>
         <Link to={'/quickRegistration'}>
-          <Button variant='contained' style={{background:'#43a047', color: 'white'}}>
+          <Button className={classes.greenButton} variant='contained'>
             Quick registration
           </Button>
         </Link>
