@@ -11,7 +11,10 @@ const useStyles = makeStyles({
   ...commonAuthStyles,
   greenButton: {
     background:'#43a047',
-    color: 'white'
+    color: 'white',
+    '&:hover': {
+      background: '#419145'
+    }
   }
 })
 

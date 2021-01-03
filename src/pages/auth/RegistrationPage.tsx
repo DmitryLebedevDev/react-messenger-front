@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { Link } from 'react-router-dom'
 import { Button, makeStyles } from '@material-ui/core'
 import { Field, Form, Formik } from 'formik'
+import * as Yup from 'yup';
 
 import { commonAuthStyles } from './styles/common'
 import { FormHeader } from './components/FormHeader'
@@ -18,6 +19,24 @@ const useStyles = makeStyles({
   },
 })
 
+const textErrorRequiredField = 'required field';
+const registrationSchema = Yup.object().shape({
+  firstName: Yup.string()
+    .required(textErrorRequiredField),
+  email: Yup.string()
+    .email('incorrect email')
+    .required(textErrorRequiredField),
+  password: Yup.string()
+    .min(8, 'Password is too short(min 8 chars)')
+    .max(20, 'Password is too long(max 20 chars)')
+    .required(textErrorRequiredField),
+  repeatPassword: Yup.string()
+    .test('match password', 'not match password', function(value) {
+      return this.parent.password === value;
+    })
+    .required(textErrorRequiredField)
+})
+
 export const RegistrationPage:FunctionComponent = () => {
   const registrationDataInit = {
     firstName: '',
@@ -31,7 +50,8 @@ export const RegistrationPage:FunctionComponent = () => {
   return (
     <>
       <Formik 
-        initialValues={registrationDataInit} 
+        initialValues={registrationDataInit}
+        validationSchema={registrationSchema}
         onSubmit={() => {}}
       >
         <Form>
