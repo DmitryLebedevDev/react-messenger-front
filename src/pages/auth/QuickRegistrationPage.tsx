@@ -14,14 +14,21 @@ export const QuickRegistrationPage:FunctionComponent = () => {
 
   return (
     <>
-      <FormHeader variant="quickRegistrationPage"/>
+      <FormHeader variant='quickRegistrationPage'/>
       <div className={classes.formFields}>
         quickRegistrationPage
       </div>
       <div className={classes.formButtons}>
+        <Button
+          variant='contained'
+          color='primary'
+          type="submit"
+        >
+          Sign up
+        </Button>
         <Link to={'/login'}>
-          <Button variant='contained' color='primary'>
-            Sign up
+          <Button color='primary'>
+            Log in
           </Button>
         </Link>
       </div>

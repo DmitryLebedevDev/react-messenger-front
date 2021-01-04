@@ -10,22 +10,32 @@ interface Iprops {
 
 export const FormInputInitInFormikField = (props: TextFieldProps) => {
   const defaultInputProps: TextFieldProps = {
-    variant:"outlined",
-    size:"small",
+    variant:'outlined',
+    size:'small',
     fullWidth:true,
-    autoComplete:"off",
+    autoComplete:'off',
   }
 
-  return (params: Omit<Iprops, "componentProps">) => (
-    <FormInput 
-      componentProps={{...defaultInputProps, ...props}} 
+  return (params: Omit<Iprops, 'componentProps'>) => (
+    <FormInput
+      componentProps={{...defaultInputProps, ...props}}
       {...params}
     />
   )
 }
 
-export const FormInput = ({field, componentProps = {}}: Iprops) => {
+export const FormInput = ({
+  field, meta, componentProps = {}, ...allProps}: Iprops
+) => {
+  const isError = Boolean(meta.error && meta.touched);
   return (
-    <TextField {...componentProps} {...field}/>
+    <TextField
+      {...componentProps}
+      {...field}
+      error={isError}
+      helperText={isError ?
+        meta.error : componentProps.helperText
+      }
+    />
   )
 }

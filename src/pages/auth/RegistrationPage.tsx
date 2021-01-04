@@ -49,49 +49,53 @@ export const RegistrationPage:FunctionComponent = () => {
 
   return (
     <>
-      <Formik 
+      <Formik
         initialValues={registrationDataInit}
         validationSchema={registrationSchema}
         onSubmit={() => {}}
       >
         <Form>
-          <FormHeader variant="registration"/>
+          <FormHeader variant='registration'/>
           <div className={classes.formFields}>
             <div className={classes.compareFields}>
-              <Field name="firstName">
+              <Field name='firstName'>
                 {FormInputInitInFormikField({
-                  label:"First name"
+                  label:'First name'
                 })}
               </Field>
-              <Field name="lastName">
+              <Field name='lastName'>
                 {FormInputInitInFormikField({
-                  label:"Last name"
+                  label:'Last name'
                 })}
               </Field>
             </div>
-            
-            <Field name="email">
+            <Field name='email'>
               {FormInputInitInFormikField({
-                label:"Email"
+                label:'Email'
               })}
             </Field>
-            <Field name="password">
+            <Field name='password'>
               {FormInputInitInFormikField({
-                label:"Password"
+                label:'Password',
+                type: 'password'
               })}
             </Field>
-            <Field name="repeatPassword">
+            <Field name='repeatPassword'>
               {FormInputInitInFormikField({
-                label:"Repeat password"
+                label:'Repeat password',
+                type: 'password'
               })}
             </Field>
           </div>
         </Form>
       </Formik>
       <div className={classes.formButtons}>
+        <Button variant='contained' color='primary'>
+          Sign up
+        </Button>
         <Link to={'/login'}>
-          <Button variant="contained" color="primary">
-            Sign up
+          <Button color='primary'>
+            Log in
           </Button>
         </Link>
       </div>

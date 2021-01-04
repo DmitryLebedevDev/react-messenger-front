@@ -33,12 +33,12 @@ export const FormHeader = ({variant}: Iprops) => {
   switch(variant) {
     case 'login':
       stylesParams = {
-        color: '#0078CE',
+        color: '#3f51b5',
       }
       break;
     case 'registration':
       stylesParams = {
-        color: '#0078CE',
+        color: '#3f51b5',
       }
       break;
     case 'quickRegistrationPage':

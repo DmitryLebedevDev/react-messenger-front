@@ -1,6 +1,13 @@
+import { authFx, registrationFx } from '../auth'
 import { $user, logoutUserEvent, setUserEvent } from './'
-import { Iuser } from './interface'
 
 $user
-  .on(setUserEvent, (_,user) => user)
-  .on(logoutUserEvent, () => null)
+  .on(
+    [
+      setUserEvent,
+      authFx.doneData,
+      registrationFx.doneData
+    ],
+    (_,user) => user
+  )
+  .reset(logoutUserEvent)

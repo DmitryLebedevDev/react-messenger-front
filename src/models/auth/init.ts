@@ -1,19 +1,46 @@
-import { $authFxError, $isAuth, authFx } from './'
-import { authUserReq, changeAuthTokenForRequests } from '../../api/api'
-import { setUserEvent, logoutUserEvent } from '../user'
+import { Unit } from 'effector'
 
-$isAuth.on(authFx.done, () => true)
-$isAuth.on(authFx.fail, () => false)
-$isAuth.on(logoutUserEvent, () => false)
+import { $authFxError, $isAuth, $registrationFxError, authFx, registrationFx } from './'
+import { authUserReq, changeAuthTokenForRequests, quickRegistrationReq, registrationReq } from '../../api/api'
+import { logoutUserEvent } from '../user'
 
 authFx.use(async () => {
   const jwtToken = localStorage.getItem('jwtToken')
   if(jwtToken) {
     changeAuthTokenForRequests(jwtToken)
     const user = await authUserReq()
-    setUserEvent(user)
+
+    return user;
   } else
     throw new Error('no auth')
 })
 
-$authFxError.on(authFx.done, () => null)
+registrationFx.use(async reqInfo => {
+  const {access_token, ...user} = reqInfo.type === 'quick' ?
+  await quickRegistrationReq(reqInfo.data)
+  :
+  await registrationReq(reqInfo.data)
+
+  localStorage.setItem('jwtToken', access_token);
+  changeAuthTokenForRequests(access_token);
+
+  return user
+})
+
+$isAuth.on(
+  [
+    authFx.done,
+    registrationFx.done,
+  ] as Unit<any>[],
+  () => true
+)
+$isAuth.on(
+  [
+    authFx.fail,
+    logoutUserEvent
+  ] as Unit<any>[],
+  () => false
+)
+
+$authFxError.reset(authFx.done)
+$registrationFxError.reset(registrationFx.done)
