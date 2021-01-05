@@ -1,7 +1,7 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core'
-import { Lock } from '@material-ui/icons';
-import AddIcon from '@material-ui/icons/Add';
+import { Lock } from '@material-ui/icons'
+import AddIcon from '@material-ui/icons/Add'
 
 interface Iprops {
   variant: 'login' | 'registration' | 'quickRegistrationPage'

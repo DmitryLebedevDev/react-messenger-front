@@ -21,7 +21,7 @@ const useStyles = makeStyles({
   },
 })
 
-const textErrorRequiredField = 'required field';
+const textErrorRequiredField = 'required field'
 const registrationSchema = Yup.object().shape({
   firstName: Yup.string()
     .required(textErrorRequiredField),
