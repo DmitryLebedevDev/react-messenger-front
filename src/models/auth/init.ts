@@ -1,6 +1,6 @@
 import { Unit } from 'effector'
 
-import { $authFxError, $isAuth, $registrationFxError, authFx, registrationFx } from './'
+import { $isAuth, authFx, registrationFx } from './'
 import { authUserReq, changeAuthTokenForRequests, quickRegistrationReq, registrationReq } from '../../api/api'
 import { logoutUserEvent } from '../user'
 
@@ -41,6 +41,3 @@ $isAuth.on(
   ] as Unit<any>[],
   () => false
 )
-
-$authFxError.reset(authFx.done)
-$registrationFxError.reset(registrationFx.done)

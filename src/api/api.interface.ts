@@ -16,3 +16,8 @@ export interface IregistrationDataRes {
   avatarId: string | null,
   access_token: string
 }
+
+export interface IReqError {
+  status: number,
+  message: string
+}

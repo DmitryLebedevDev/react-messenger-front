@@ -1,11 +1,10 @@
 import axios, { AxiosResponse } from 'axios'
 
-import { env } from 'process'
 import { Iuser } from '../models/user/interface'
 import { IquickRegistrationDataReq, IregistrationDataReq, IregistrationDataRes } from './api.interface'
 
 const api = axios.create({
-  baseURL: env.REACT_APP_BASE_URL
+  baseURL: process.env.REACT_APP_BASE_URL
 })
 
 export const changeAuthTokenForRequests = (token: string) => {
@@ -15,7 +14,15 @@ export const changeAuthTokenForRequests = (token: string) => {
   return api;
 }
 const getDataOfRequest = <T>(response: Promise<AxiosResponse<T>>) => (
-  response.then(info => info.data)
+  response
+    .then(info => info.data)
+    .catch(({request: {status, response}}) => {
+      const errorInfo = JSON.parse(response);
+      return Promise.reject({
+        status,
+        message: errorInfo.message || 'Request failed, please try again'
+      })
+    })
 )
 
 export const authUserReq = () => (

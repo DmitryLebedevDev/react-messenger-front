@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from 'react'
 import { Link } from 'react-router-dom'
-import { Formik, Form, Field } from 'formik'
+import { useFormik } from 'formik'
 import { makeStyles, Button } from '@material-ui/core'
 
-import { FormInputInitInFormikField } from './components/FormInput'
+import { useFormikInput } from './components/FormInput'
 import { FormHeader } from './components/FormHeader'
 import { commonAuthStyles } from './styles/common'
 
@@ -19,32 +19,28 @@ const useStyles = makeStyles({
 })
 
 export const LoginPage:FunctionComponent = () => {
-  const classes = useStyles();
+  const loginDataInit = {email: '', password: ''}
+
+  const formik = useFormik({
+    initialValues: loginDataInit,
+    onSubmit: () => {},
+  });
+
+  const createFormField = useFormikInput<
+    keyof typeof loginDataInit
+  >(formik)
+
+  const classes = useStyles()
 
   return (
-    <>
-      <Formik
-        initialValues={{email: '', password: ''}}
-        onSubmit={(e) => {console.log(e)}}
-      >
-        {({ isSubmitting }) => (
-          <Form>
-            <FormHeader variant="login"/>
-            <div className={classes.formFields}>
-              <Field name="email">
-                {FormInputInitInFormikField({
-                  label:"Email",
-                })}
-              </Field>
-              <Field name="password">
-                {FormInputInitInFormikField({
-                  label:"Password"
-                })}
-              </Field>
-            </div>
-          </Form>
-        )}
-      </Formik>
+    <form onSubmit={formik.handleSubmit}>
+      <FormHeader variant="login"/>
+      <div className={classes.formFields}>
+        {createFormField('email', {label: 'Email'})}
+        {createFormField('password', {
+          label: 'Password', type: 'password'
+        })}
+      </div>
       <div className={classes.formButtons}>
         <Button variant='contained' color='primary'>
           Log in
@@ -60,6 +56,6 @@ export const LoginPage:FunctionComponent = () => {
           </Button>
         </Link>
       </div>
-    </>
+    </form>
   )
 }

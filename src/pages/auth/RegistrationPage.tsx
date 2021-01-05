@@ -1,12 +1,14 @@
 import React, { FunctionComponent } from 'react'
 import { Link } from 'react-router-dom'
 import { Button, makeStyles } from '@material-ui/core'
-import { Field, Form, Formik } from 'formik'
-import * as Yup from 'yup';
+import { useFormik } from 'formik'
+import * as Yup from 'yup'
 
 import { commonAuthStyles } from './styles/common'
 import { FormHeader } from './components/FormHeader'
-import { FormInputInitInFormikField } from './components/FormInput'
+import { useFormikInput } from './components/FormInput'
+import { $registrationFxStatus, registrationFx } from '../../models/auth'
+import { useStore } from 'effector-react'
 
 const useStyles = makeStyles({
   ...commonAuthStyles,
@@ -38,6 +40,8 @@ const registrationSchema = Yup.object().shape({
 })
 
 export const RegistrationPage:FunctionComponent = () => {
+  const {pending, error} = useStore($registrationFxStatus)
+
   const registrationDataInit = {
     firstName: '',
     lastName: '',
@@ -45,52 +49,43 @@ export const RegistrationPage:FunctionComponent = () => {
     password: '',
     repeatPassword: ''
   }
-  const classes = useStyles();
+
+  const handleSubmit = (
+    data: typeof registrationDataInit,
+  ) => {
+    registrationFx({type: 'full', data})
+  }
+  const formik = useFormik({
+    initialValues: registrationDataInit,
+    validationSchema: registrationSchema,
+    onSubmit: handleSubmit,
+  });
+
+  const createFormField = useFormikInput<
+    keyof typeof registrationDataInit
+  >(formik)
+
+  const classes = useStyles()
 
   return (
-    <>
-      <Formik
-        initialValues={registrationDataInit}
-        validationSchema={registrationSchema}
-        onSubmit={() => {}}
-      >
-        <Form>
-          <FormHeader variant='registration'/>
-          <div className={classes.formFields}>
-            <div className={classes.compareFields}>
-              <Field name='firstName'>
-                {FormInputInitInFormikField({
-                  label:'First name'
-                })}
-              </Field>
-              <Field name='lastName'>
-                {FormInputInitInFormikField({
-                  label:'Last name'
-                })}
-              </Field>
-            </div>
-            <Field name='email'>
-              {FormInputInitInFormikField({
-                label:'Email'
-              })}
-            </Field>
-            <Field name='password'>
-              {FormInputInitInFormikField({
-                label:'Password',
-                type: 'password'
-              })}
-            </Field>
-            <Field name='repeatPassword'>
-              {FormInputInitInFormikField({
-                label:'Repeat password',
-                type: 'password'
-              })}
-            </Field>
-          </div>
-        </Form>
-      </Formik>
+    <form onSubmit={formik.handleSubmit}>
+      <FormHeader variant='registration'/>
+      <div className={classes.formFields}>
+        <div className={classes.compareFields}>
+          {createFormField('firstName', {label: 'First name'})}
+          {createFormField('lastName',  {label: 'Last name'})}
+        </div>
+        {createFormField('email', {label: 'Email'})}
+        {createFormField('password', {label: 'Password', type: 'password'})}
+        {createFormField(
+          'repeatPassword', {
+            label: 'Repeat password',
+            type: 'password'
+          }
+        )}
+      </div>
       <div className={classes.formButtons}>
-        <Button variant='contained' color='primary'>
+        <Button variant='contained' color='primary' type="submit">
           Sign up
         </Button>
         <Link to={'/login'}>
@@ -99,6 +94,6 @@ export const RegistrationPage:FunctionComponent = () => {
           </Button>
         </Link>
       </div>
-    </>
+    </form>
   )
 }

@@ -1,28 +1,20 @@
-import { combine, createEffect, createStore, restore } from "effector"
+import { createEffect, createStore } from "effector"
 
-import { IquickRegistrationDataReq, IregistrationDataReq } from "../../api/api.interface"
+import { createEffectStatus } from '../common/hoc'
+import { IquickRegistrationDataReq, IregistrationDataReq, IReqError } from "../../api/api.interface"
 import { Iuser } from "../user/interface"
 
 export const $isAuth = createStore<boolean | null>(null)
 
-export const authFx = createEffect<void,Iuser,Error>()
-export const $authFxError = restore(authFx.failData, null)
-export const $authFxStatus = combine({
-  pending: authFx.pending,
-  error: $authFxError,
-  data: $isAuth
-})
+export const authFx = createEffect<void,Iuser,IReqError>()
+export const $authFxStatus = createEffectStatus(authFx, $isAuth)
 
 export const registrationFx = createEffect<
   {type: 'full', data: IregistrationDataReq} |
   {type: 'quick', data: IquickRegistrationDataReq},
   Iuser,
-  Error
+  IReqError
 >();
-export const $registrationFxError = restore(registrationFx.failData,null)
-export const $registrationFxStatus = combine({
-  pending: registrationFx.pending,
-  error: $registrationFxError
-})
+export const $registrationFxStatus = createEffectStatus(registrationFx);
 
 export const loginFx = createEffect()
