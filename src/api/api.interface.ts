@@ -16,6 +16,10 @@ export interface IregistrationDataRes {
   avatarId: string | null,
   access_token: string
 }
+export interface IquickRegistrationDataRes
+       extends   IregistrationDataRes {
+  password: string
+}
 
 export interface IReqError {
   status: number,

@@ -1,20 +1,29 @@
-import { createEffect, createStore } from "effector"
+import { createEffect, createEvent, createStore } from "effector"
 
 import { createEffectStatus } from '../common/hoc'
 import { IquickRegistrationDataReq, IregistrationDataReq, IReqError } from "../../api/api.interface"
 import { Iuser } from "../user/interface"
+import { IquickRegistrationFxNextStep } from "./interface"
 
+export const authEvent = createEvent()
+export const logoutEvet = createEvent()
 export const $isAuth = createStore<boolean | null>(null)
 
 export const authFx = createEffect<void,Iuser,IReqError>()
 export const $authFxStatus = createEffectStatus(authFx, $isAuth)
 
 export const registrationFx = createEffect<
-  {type: 'full', data: IregistrationDataReq} |
-  {type: 'quick', data: IquickRegistrationDataReq},
+  IregistrationDataReq,
   Iuser,
   IReqError
 >();
-export const $registrationFxStatus = createEffectStatus(registrationFx);
+export const $registrationFxStatus = createEffectStatus(registrationFx)
+
+export const quickRegistrationFx = createEffect<
+  IquickRegistrationDataReq,
+  IquickRegistrationFxNextStep,
+  IReqError
+>();
+export const $quickRegistrationFxStatus = createEffectStatus(quickRegistrationFx)
 
 export const loginFx = createEffect()

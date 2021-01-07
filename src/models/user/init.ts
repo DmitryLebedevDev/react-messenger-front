@@ -1,5 +1,5 @@
-import { authFx, registrationFx } from '../auth'
-import { $user, logoutUserEvent, setUserEvent } from './'
+import { authFx, logoutEvet, registrationFx } from '../auth'
+import { $user, setUserEvent } from './'
 
 $user
   .on(
@@ -10,4 +10,4 @@ $user
     ],
     (_,user) => user
   )
-  .reset(logoutUserEvent)
+  .reset(logoutEvet)

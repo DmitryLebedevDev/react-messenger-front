@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from 'axios'
 
 import { Iuser } from '../models/user/interface'
-import { IquickRegistrationDataReq, IregistrationDataReq, IregistrationDataRes } from './api.interface'
+import { IquickRegistrationDataReq, IquickRegistrationDataRes, IregistrationDataReq, IregistrationDataRes } from './api.interface'
 
 const api = axios.create({
   baseURL: process.env.REACT_APP_BASE_URL
@@ -17,10 +17,16 @@ const getDataOfRequest = <T>(response: Promise<AxiosResponse<T>>) => (
   response
     .then(info => info.data)
     .catch(({request: {status, response}}) => {
-      const errorInfo = JSON.parse(response);
+      const errorInfo = JSON.parse(
+        response ?
+          response
+          :
+          `{"message": "Request failed, please try again"}`
+      );
+
       return Promise.reject({
         status,
-        message: errorInfo.message || 'Request failed, please try again'
+        message: errorInfo.message
       })
     })
 )
@@ -31,7 +37,7 @@ export const authUserReq = () => (
 
 export const quickRegistrationReq = (data: IquickRegistrationDataReq) => (
   getDataOfRequest(
-    api.post<IregistrationDataRes>('auth/quick-registration', data)
+    api.post<IquickRegistrationDataRes>('auth/quick-registration', data)
   )
 )
 

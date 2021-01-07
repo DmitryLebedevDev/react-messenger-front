@@ -1,6 +1,11 @@
 import { StyleRules } from "@material-ui/core/styles/withStyles";
 
 const css = {
+  form: {
+    '& > * + *': {
+      marginTop: '10px'
+    }
+  },
   formButtons: {
     display: 'flex',
     flexDirection: 'column',
@@ -12,9 +17,19 @@ const css = {
     }
   },
   formFields: {
-    padding: '10px 0px',
     '& div + div': {
       marginTop: 10
+    }
+  },
+  formError: {
+    color: 'red',
+    textAlign: 'center'
+  },
+  greenButton: {
+    background:'#43a047',
+    color: 'white',
+    '&:hover': {
+      background: '#419145'
     }
   }
 } as const // for compile

@@ -3,19 +3,12 @@ import { Link } from 'react-router-dom'
 import { useFormik } from 'formik'
 import { makeStyles, Button } from '@material-ui/core'
 
-import { useFormikInput } from './components/FormInput'
-import { FormHeader } from './components/FormHeader'
-import { commonAuthStyles } from './styles/common'
+import { useFormikInput } from '../components/FormInput'
+import { FormHeader } from '../components/FormHeader'
+import { commonAuthStyles } from '../styles/common'
 
 const useStyles = makeStyles({
-  ...commonAuthStyles,
-  greenButton: {
-    background:'#43a047',
-    color: 'white',
-    '&:hover': {
-      background: '#419145'
-    }
-  }
+  ...commonAuthStyles
 })
 
 export const LoginPage:FunctionComponent = () => {
@@ -33,8 +26,8 @@ export const LoginPage:FunctionComponent = () => {
   const classes = useStyles()
 
   return (
-    <form onSubmit={formik.handleSubmit}>
-      <FormHeader variant="login"/>
+    <form className={classes.form} onSubmit={formik.handleSubmit}>
+      <FormHeader pending={false} variant="login"/>
       <div className={classes.formFields}>
         {createFormField('email', {label: 'Email'})}
         {createFormField('password', {

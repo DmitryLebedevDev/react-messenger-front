@@ -1,10 +1,10 @@
 import React, { FunctionComponent } from 'react'
 import { Redirect, Route } from 'react-router-dom'
 
-import { LoginPage } from './LoginPage'
-import { RegistrationPage } from './RegistrationPage'
+import { LoginPage } from './LoginPage/LoginPage'
+import { RegistrationPage } from './RegistrationPage/RegistrationPage'
 import { AuthBg } from './components/AuthBg'
-import { QuickRegistrationPage } from './QuickRegistrationPage'
+import { QuickRegistrationPage } from './QuickRegistrationPage/QuickRegistrationPage'
 import { WhiteWindow } from './components/WhiteWindow'
 
 export const AuthContainer:FunctionComponent = () => {

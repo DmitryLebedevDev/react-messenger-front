@@ -1,11 +1,18 @@
 import { Unit } from 'effector'
 
-import { $isAuth, authFx, registrationFx } from './'
+import { $isAuth, authEvent, authFx, logoutEvet, quickRegistrationFx, registrationFx } from './'
 import { authUserReq, changeAuthTokenForRequests, quickRegistrationReq, registrationReq } from '../../api/api'
-import { logoutUserEvent } from '../user'
+import { setUserEvent } from '../user'
+
+const setJwtTokenInLocalStorage = (jwtToken: string) => {
+  localStorage.setItem('jwtToken', jwtToken);
+}
+const getJwtTokenOfLocalStorage = () => {
+  return localStorage.getItem('jwtToken');
+}
 
 authFx.use(async () => {
-  const jwtToken = localStorage.getItem('jwtToken')
+  const jwtToken = getJwtTokenOfLocalStorage();
   if(jwtToken) {
     changeAuthTokenForRequests(jwtToken)
     const user = await authUserReq()
@@ -15,20 +22,46 @@ authFx.use(async () => {
     throw new Error('no auth')
 })
 
-registrationFx.use(async reqInfo => {
-  const {access_token, ...user} = reqInfo.type === 'quick' ?
-  await quickRegistrationReq(reqInfo.data)
-  :
-  await registrationReq(reqInfo.data)
+registrationFx.use(async data => {
+  const {
+    access_token,
+    ...user
+  } = await registrationReq(data)
 
-  localStorage.setItem('jwtToken', access_token);
+  setJwtTokenInLocalStorage(access_token);
   changeAuthTokenForRequests(access_token);
 
   return user
 })
 
+quickRegistrationFx.use(async data => {
+  const {
+    email,
+    password,
+    access_token,
+    ...user
+  } = await quickRegistrationReq(data);
+
+  setJwtTokenInLocalStorage(access_token);
+  changeAuthTokenForRequests(access_token);
+
+  const next = () => {
+    setUserEvent({email,...user});
+    authEvent();
+  }
+
+  return {
+    userInfo: {
+      email,
+      password
+    },
+    next
+  }
+})
+
 $isAuth.on(
   [
+    authEvent,
     authFx.done,
     registrationFx.done,
   ] as Unit<any>[],
@@ -36,8 +69,8 @@ $isAuth.on(
 )
 $isAuth.on(
   [
+    logoutEvet,
     authFx.fail,
-    logoutUserEvent
   ] as Unit<any>[],
   () => false
 )

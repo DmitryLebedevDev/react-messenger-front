@@ -10,6 +10,7 @@ const useStyles = makeStyles({
     padding: '10px',
     backgroundColor: 'white',
     borderRadius: 3,
+    overflow: 'hidden'
   }
 })
 

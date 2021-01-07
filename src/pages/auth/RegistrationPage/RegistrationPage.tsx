@@ -1,13 +1,13 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Button, makeStyles } from '@material-ui/core'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 
-import { commonAuthStyles } from './styles/common'
-import { FormHeader } from './components/FormHeader'
-import { useFormikInput } from './components/FormInput'
-import { $registrationFxStatus, registrationFx } from '../../models/auth'
+import { commonAuthStyles } from '../styles/common'
+import { FormHeader } from '../components/FormHeader'
+import { useFormikInput } from '../components/FormInput'
+import { $registrationFxStatus, registrationFx } from '../../../models/auth'
 import { useStore } from 'effector-react'
 
 const useStyles = makeStyles({
@@ -24,6 +24,8 @@ const useStyles = makeStyles({
 const textErrorRequiredField = 'required field'
 const registrationSchema = Yup.object().shape({
   firstName: Yup.string()
+    .required(textErrorRequiredField),
+  lastName: Yup.string()
     .required(textErrorRequiredField),
   email: Yup.string()
     .email('incorrect email')
@@ -50,16 +52,18 @@ export const RegistrationPage:FunctionComponent = () => {
     repeatPassword: ''
   }
 
-  const handleSubmit = (
-    data: typeof registrationDataInit,
-  ) => {
-    registrationFx({type: 'full', data})
-  }
   const formik = useFormik({
     initialValues: registrationDataInit,
     validationSchema: registrationSchema,
-    onSubmit: handleSubmit,
+    onSubmit: registrationFx,
   });
+
+  useEffect(() => {
+    if(error && error.status === 400) {
+      formik.setFieldError('email', error.message)
+    }
+    //eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [error,formik.setFieldError])
 
   const createFormField = useFormikInput<
     keyof typeof registrationDataInit
@@ -68,8 +72,8 @@ export const RegistrationPage:FunctionComponent = () => {
   const classes = useStyles()
 
   return (
-    <form onSubmit={formik.handleSubmit}>
-      <FormHeader variant='registration'/>
+    <form className={classes.form} onSubmit={formik.handleSubmit}>
+      <FormHeader pending={pending} variant='registration'/>
       <div className={classes.formFields}>
         <div className={classes.compareFields}>
           {createFormField('firstName', {label: 'First name'})}
@@ -84,6 +88,9 @@ export const RegistrationPage:FunctionComponent = () => {
           }
         )}
       </div>
+      {error && (error.status === 404 || error.status === 0) &&
+        <div className={classes.formError}>{error.message}</div>
+      }
       <div className={classes.formButtons}>
         <Button variant='contained' color='primary' type="submit">
           Sign up
