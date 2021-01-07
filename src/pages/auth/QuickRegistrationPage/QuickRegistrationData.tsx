@@ -33,7 +33,7 @@ export const QuickRegistrationData: React.FunctionComponent<Iprops>
   const [isSavedData, setIsSavedData] = useState(false);
   const saveDataFn = () => {
     copyText(
-    `email: ${props.userData.email}` + ' \n' +
+    `email: ${props.userData.email} ` +
     `password: ${props.userData.password}`
     )
     setIsSavedData(true);

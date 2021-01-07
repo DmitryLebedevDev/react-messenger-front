@@ -1,10 +1,8 @@
 import React, { FunctionComponent } from 'react'
-import { Button, makeStyles } from '@material-ui/core'
-import { Link } from 'react-router-dom'
+import { makeStyles } from '@material-ui/core'
 import cn from 'classnames'
 
-import { commonAuthStyles } from '../styles/common'
-import { $quickRegistrationFxStatus, quickRegistrationFx, registrationFx } from '../../../models/auth'
+import { $quickRegistrationFxStatus } from '../../../models/auth'
 import { useStore } from 'effector-react'
 import { QuickRegistrationForm } from './QuickRegistrationForm'
 import { QuickRegistrationData } from './QuickRegistrationData'

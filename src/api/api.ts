@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from 'axios'
 
 import { Iuser } from '../models/user/interface'
-import { IquickRegistrationDataReq, IquickRegistrationDataRes, IregistrationDataReq, IregistrationDataRes } from './api.interface'
+import { IloginDataReq, IloginDataRes, IquickRegistrationDataReq, IquickRegistrationDataRes, IregistrationDataReq, IregistrationDataRes } from './api.interface'
 
 const api = axios.create({
   baseURL: process.env.REACT_APP_BASE_URL
@@ -44,5 +44,11 @@ export const quickRegistrationReq = (data: IquickRegistrationDataReq) => (
 export const registrationReq = (data: IregistrationDataReq) => (
   getDataOfRequest(
     api.post<IregistrationDataRes>('/auth/registration', data)
+  )
+)
+
+export const loginReq = (data: IloginDataReq) => (
+  getDataOfRequest(
+    api.post<IloginDataRes>('/auth/login', data)
   )
 )

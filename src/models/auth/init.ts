@@ -1,7 +1,7 @@
-import { Unit } from 'effector'
+import { forward, Unit } from 'effector'
 
-import { $isAuth, authEvent, authFx, logoutEvet, quickRegistrationFx, registrationFx } from './'
-import { authUserReq, changeAuthTokenForRequests, quickRegistrationReq, registrationReq } from '../../api/api'
+import { $isAuth, authEvent, authFx, loginFx, logoutEvet, quickRegistrationFx, registrationFx } from './'
+import { authUserReq, changeAuthTokenForRequests, loginReq, quickRegistrationReq, registrationReq } from '../../api/api'
 import { setUserEvent } from '../user'
 
 const setJwtTokenInLocalStorage = (jwtToken: string) => {
@@ -11,8 +11,9 @@ const getJwtTokenOfLocalStorage = () => {
   return localStorage.getItem('jwtToken');
 }
 
-authFx.use(async () => {
-  const jwtToken = getJwtTokenOfLocalStorage();
+authFx.use(async (token) => {
+  const jwtToken = token || getJwtTokenOfLocalStorage();
+
   if(jwtToken) {
     changeAuthTokenForRequests(jwtToken)
     const user = await authUserReq()
@@ -57,6 +58,18 @@ quickRegistrationFx.use(async data => {
     },
     next
   }
+})
+
+loginFx.use(async (data) => {
+  const {access_token} = await loginReq(data)
+
+  setJwtTokenInLocalStorage(access_token)
+
+  return access_token
+})
+forward({
+  from: loginFx.doneData,
+  to: authFx
 })
 
 $isAuth.on(
