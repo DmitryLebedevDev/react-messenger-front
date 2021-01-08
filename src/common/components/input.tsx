@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from 'react'
+import React, { FunctionComponent, useEffect, useState } from 'react'
 import { makeStyles } from '@material-ui/core'
 import CloseIcon from '@material-ui/icons/Close'
 import cn from 'classnames'
@@ -59,6 +59,9 @@ const useStyles = makeStyles({
   placeholderOff: {
     opacity: 0,
     transform: 'translateY(-50%) translateX(100%)',
+  },
+  placeholderDisplayNone: {
+    zIndex: -1,
   }
 })
 
@@ -68,19 +71,25 @@ interface Iprops {
 
 export const Input:FunctionComponent<Iprops> = ({className}) => {
   const [value, setValue] = useState('');
+  const [isHidePlaseholder, setIsHidePlaseholder] = useState(false);
+
+  useEffect(() => {!value && setIsHidePlaseholder(false)}, [value])
 
   const classes = useStyles();
 
   return (
     <div className={classes.inputWrap}>
       <input
-        onChange={e => setValue(e.target.value)}
         value={value}
+        onChange={e => setValue(e.target.value)}
         className={cn(classes.input, className)}
       />
       <div className={cn(
           classes.placeholder,
-        {[classes.placeholderOff]: !!value})}
+        {[classes.placeholderOff]: !!value,
+         [classes.placeholderDisplayNone]: isHidePlaseholder
+        })}
+        onTransitionEndCapture={e => !!value && setIsHidePlaseholder(true)}
       >
         Поиск
       </div>
