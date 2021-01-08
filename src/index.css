@@ -18,3 +18,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+:root {
+  --border: #E4E3E2;
+  --outline-input: #39C3F0;
+  --color-input: #999999;
+  --color-input-active: #ABABAB;
+  --background-inpit: #F1F1F1;
+  --background-inpit-active: #FFF;
+  --close-icon: #ABABAB;
+  --close-icon-active: #989898;
+}
