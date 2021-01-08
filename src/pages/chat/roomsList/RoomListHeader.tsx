@@ -1,7 +1,8 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core'
+import { IconButton, makeStyles } from '@material-ui/core'
+import MenuIcon from '@material-ui/icons/Menu';
 
-import { Input } from '../../../common/components/input'
+import { SearchInput } from './components/SearchInput'
 
 const useStyles = makeStyles({
   roomListHeader: {
@@ -10,6 +11,16 @@ const useStyles = makeStyles({
     gridTemplateColumns: '60px 1fr',
     height: 66,
     border: '1px solid red',
+  },
+  menu: {
+    justifySelf: 'center',
+    '& svg': {
+      fontSize: 25,
+      color: 'var(--icon)',
+    },
+    '&:hover svg': {
+      color: 'var(--icon-active)'
+    }
   },
   search: {
     paddingRight: 15,
@@ -24,9 +35,13 @@ export const RoomListHeader = () => {
 
   return (
     <div className={classes.roomListHeader}>
-      <div></div>
+      <div className={classes.menu}>
+        <IconButton>
+          <MenuIcon />
+        </IconButton>
+      </div>
       <div className={classes.search}>
-        <Input className={classes.searchInput}/>
+        <SearchInput className={classes.searchInput}/>
       </div>
     </div>
   )

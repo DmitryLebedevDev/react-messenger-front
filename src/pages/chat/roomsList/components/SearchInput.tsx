@@ -36,12 +36,12 @@ const useStyles = makeStyles({
     top: '50%',
     right: 6,
     fontSize: 28,
-    color: 'var(--close-icon)',
+    color: 'var(--icon)',
     cursor: 'pointer',
     transform: 'translateY(-50%) rotate(90deg) scale(0)',
     transition: '.2s',
     '&:hover': {
-      color: 'var(--close-icon-active)'
+      color: 'var(--icon-active)'
     }
   },
   closeIconOn: {
@@ -71,7 +71,7 @@ interface Iprops {
   className?: string
 }
 
-export const Input:FunctionComponent<Iprops> = ({className}) => {
+export const SearchInput:FunctionComponent<Iprops> = ({className}) => {
   const inputRef = useRef<HTMLInputElement|null>(null);
   const [value, setValue] = useState('');
   const [isHidePlaseholder, setIsHidePlaseholder] = useState(false);
