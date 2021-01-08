@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useState } from 'react'
+import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import { makeStyles } from '@material-ui/core'
 import CloseIcon from '@material-ui/icons/Close'
 import cn from 'classnames'
@@ -55,6 +55,8 @@ const useStyles = makeStyles({
     color: 'var(--color-input)',
     transform: 'translateY(-50%)',
     transition: '.2s',
+    userSelect: 'none',
+    cursor: 'text'
   },
   placeholderOff: {
     opacity: 0,
@@ -70,6 +72,7 @@ interface Iprops {
 }
 
 export const Input:FunctionComponent<Iprops> = ({className}) => {
+  const inputRef = useRef<HTMLInputElement|null>(null);
   const [value, setValue] = useState('');
   const [isHidePlaseholder, setIsHidePlaseholder] = useState(false);
 
@@ -80,6 +83,7 @@ export const Input:FunctionComponent<Iprops> = ({className}) => {
   return (
     <div className={classes.inputWrap}>
       <input
+        ref={inputRef}
         value={value}
         onChange={e => setValue(e.target.value)}
         className={cn(classes.input, className)}
@@ -90,6 +94,7 @@ export const Input:FunctionComponent<Iprops> = ({className}) => {
          [classes.placeholderDisplayNone]: isHidePlaseholder
         })}
         onTransitionEndCapture={e => !!value && setIsHidePlaseholder(true)}
+        onMouseDown={(e) => {inputRef.current?.focus(); e.preventDefault()}}
       >
         Поиск
       </div>
