@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect } from 'react'
+import React, { FunctionComponent, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { Button, makeStyles } from '@material-ui/core'
 import { useFormik } from 'formik'
@@ -57,13 +57,18 @@ export const RegistrationPage:FunctionComponent = () => {
     validationSchema: registrationSchema,
     onSubmit: registrationFx,
   });
+  const formikRef = useRef(formik);
+  useEffect(() => {
+    formikRef.current = formik;
+  },[formik])
 
   useEffect(() => {
     if(error && error.status === 400) {
-      formik.setFieldError('email', error.message)
+      formikRef
+        .current
+        .setFieldError('email', error.message)
     }
-    //eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [error,formik.setFieldError])
+  }, [error])
 
   const createFormField = useFormikInput<
     keyof typeof registrationDataInit
