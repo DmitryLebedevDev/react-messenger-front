@@ -1,6 +1,7 @@
 import { makeStyles } from '@material-ui/core'
 import React from 'react'
 import { RoomList } from './roomsList/RoomList'
+import { UserSettings } from './userSettings/UserSettings'
 
 const useStyles = makeStyles({
   chat: {
@@ -15,6 +16,7 @@ export const Chat = () => {
 
   return (
     <div className={classes.chat}>
+      <UserSettings/>
       <RoomList/>
     </div>
   )
