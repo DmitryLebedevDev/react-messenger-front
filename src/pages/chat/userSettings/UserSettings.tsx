@@ -3,15 +3,19 @@ import { makeStyles } from '@material-ui/core'
 
 const useStyles = makeStyles({
   wrapSettings: {
+    zIndex: 2,
     position: 'absolute',
     top: 0,
     left: 0,
+    width: '320px',
+    height: '100vh',
+    background: 'var(--background)',
   },
   shadow: {
     position: 'absolute',
     top: 0,
     left: 0,
-    zIndex: -1,
+    zIndex: 1,
     width: '100vw',
     height: '100vh',
     background: '#7c7c7c75'
