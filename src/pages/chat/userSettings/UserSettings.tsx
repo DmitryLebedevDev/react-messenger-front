@@ -18,13 +18,18 @@ const useStyles = makeStyles({
     transform: 'translateX(0px)'
   },
   shadow: {
+    zIndex: -1,
     position: 'absolute',
     top: 0,
     left: 0,
-    zIndex: 1,
     width: '100vw',
     height: '100vh',
-    background: '#7c7c7c75'
+    background: '#7c7c7c00',
+    transition: '.2s',
+  },
+  shadowWiew: {
+    zIndex: 1,
+    background: '#7c7c7c75',
   }
 })
 
@@ -47,7 +52,11 @@ export const UserSettings:FunctionComponent = () => {
       >
         settings
       </div>
-      <div className={classes.shadow}></div>
+      <div className={cn(
+          classes.shadow,
+        {[classes.shadowWiew]: isOpenSettings}
+        )}
+      ></div>
     </>
   )
 }
