@@ -33,15 +33,16 @@ const useStyles = makeStyles({
   }
 })
 
-export const UserSettings:FunctionComponent = () => {
-  const [isOpenSettings, setIsOpenSettings] = useState(false);
+interface Iprops {
+  isOpenSettings: boolean,
+  openFn: () => void,
+  closeFn: () => void,
+}
 
+export const UserSettings:FunctionComponent<Iprops> = (
+  {isOpenSettings, openFn, closeFn}
+) => {
   const classes = useStyles()
-
-  useEffect(
-    () => {setInterval(() => setIsOpenSettings(i => !i),1000)},
-    []
-  )
 
   return (
     <>
@@ -49,6 +50,7 @@ export const UserSettings:FunctionComponent = () => {
           classes.settings,
         {[classes.settingsOpen]: isOpenSettings}
         )}
+        onClick={openFn}
       >
         settings
       </div>
@@ -56,6 +58,7 @@ export const UserSettings:FunctionComponent = () => {
           classes.shadow,
         {[classes.shadowWiew]: isOpenSettings}
         )}
+        onClick={closeFn}
       ></div>
     </>
   )

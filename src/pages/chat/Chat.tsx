@@ -1,5 +1,5 @@
 import { makeStyles } from '@material-ui/core'
-import React from 'react'
+import React, { useState } from 'react'
 import { RoomList } from './roomsList/RoomList'
 import { UserSettings } from './userSettings/UserSettings'
 
@@ -12,11 +12,17 @@ const useStyles = makeStyles({
 })
 
 export const Chat = () => {
+  const [isOpenSettings, setIsOpenSettings] = useState(true);
+
   const classes = useStyles();
 
   return (
     <div className={classes.chat}>
-      <UserSettings/>
+      <UserSettings
+        isOpenSettings={isOpenSettings}
+        openFn={() => setIsOpenSettings(true)}
+        closeFn={() => setIsOpenSettings(false)}
+      />
       <RoomList/>
     </div>
   )
