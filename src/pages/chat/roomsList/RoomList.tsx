@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FunctionComponent } from 'react'
 import { makeStyles } from '@material-ui/core'
 
 import { RoomListHeader } from './RoomListHeader';
@@ -9,12 +9,20 @@ const useStyles = makeStyles({
   }
 })
 
-export const RoomList = () => {
+interface Iprops {
+  openSettingsFn: () => void,
+}
+
+const RoomListFC:FunctionComponent<Iprops> = ({
+  openSettingsFn
+}) => {
   const classes = useStyles();
 
   return (
     <div className={classes.roomList}>
-      <RoomListHeader/>
+      <RoomListHeader openSettingsFn={openSettingsFn}/>
     </div>
   )
 }
+
+export const RoomList = React.memo(RoomListFC);

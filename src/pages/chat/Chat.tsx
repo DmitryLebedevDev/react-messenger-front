@@ -23,7 +23,9 @@ export const Chat = () => {
         openFn={() => setIsOpenSettings(true)}
         closeFn={() => setIsOpenSettings(false)}
       />
-      <RoomList/>
+      <RoomList
+        openSettingsFn={() => setIsOpenSettings(true)}
+      />
     </div>
   )
 }

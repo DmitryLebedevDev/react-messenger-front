@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useState } from 'react'
+import React, { FunctionComponent } from 'react'
 import { makeStyles } from '@material-ui/core'
 import cn from 'classnames'
 
@@ -39,9 +39,9 @@ interface Iprops {
   closeFn: () => void,
 }
 
-export const UserSettings:FunctionComponent<Iprops> = (
-  {isOpenSettings, openFn, closeFn}
-) => {
+export const UserSettings:FunctionComponent<Iprops> = ({
+  isOpenSettings, openFn, closeFn
+}) => {
   const classes = useStyles()
 
   return (
