@@ -48,7 +48,7 @@ export const QuickRegistrationForm:FunctionComponent<Iprops> = (
   const classes = useStyles()
 
   return (
-    <form className={classes.form} onSubmit={formik.handleSubmit}>
+    <form onSubmit={formik.handleSubmit} className={classes.form}>
       <FormHeader pending={pending} variant='quickRegistrationPage'/>
       <div className={classes.formFields}>
         {createFormField('firstName', {label: 'FirstName'})}

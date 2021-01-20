@@ -27,7 +27,7 @@ const useStyles = makeStyles({
 })
 
 export const QuickRegistrationPage:FunctionComponent = () => {
-  const { pending, error, data } = useStore($quickRegistrationFxStatus);
+  const { pending, error, data } = useStore($quickRegistrationFxStatus)
   console.log(data)
   const classes = useStyles()
 

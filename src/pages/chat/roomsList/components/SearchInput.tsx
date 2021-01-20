@@ -83,9 +83,9 @@ export const SearchInput:FunctionComponent<Iprops> = ({className}) => {
   return (
     <div className={classes.inputWrap}>
       <input
+        onChange={e => setValue(e.target.value)}
         ref={inputRef}
         value={value}
-        onChange={e => setValue(e.target.value)}
         className={cn(classes.input, className)}
       />
       <div className={cn(

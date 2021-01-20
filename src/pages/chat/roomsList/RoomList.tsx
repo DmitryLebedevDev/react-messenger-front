@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import { makeStyles } from '@material-ui/core'
 
-import { RoomListHeader } from './RoomListHeader';
+import { RoomListHeader } from './RoomListHeader'
 
 const useStyles = makeStyles({
   roomList: {

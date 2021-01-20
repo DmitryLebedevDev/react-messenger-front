@@ -26,6 +26,7 @@ const useStyles = makeStyles({
 
 export const AuthBg:FunctionComponent<Iprops> = ({children, content}) => {
   const classes = useStyles({urlImage: mountainsImage})
+
   const wrapClasses = cn([
     classes.bgImage,
     {[classes.contentCenter]: Boolean(content)}

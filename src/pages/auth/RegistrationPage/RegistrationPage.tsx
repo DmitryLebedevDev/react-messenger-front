@@ -77,7 +77,7 @@ export const RegistrationPage:FunctionComponent = () => {
   const classes = useStyles()
 
   return (
-    <form className={classes.form} onSubmit={formik.handleSubmit}>
+    <form onSubmit={formik.handleSubmit} className={classes.form}>
       <FormHeader pending={pending} variant='registration'/>
       <div className={classes.formFields}>
         <div className={classes.compareFields}>

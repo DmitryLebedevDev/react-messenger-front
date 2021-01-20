@@ -61,6 +61,7 @@ export const FormHeader = ({variant, pending}: Iprops) => {
   }
 
   const classes = useStyles(stylesParams)
+
   return (
     <div className={classes.wrap}>
       <div className={classes.content}>

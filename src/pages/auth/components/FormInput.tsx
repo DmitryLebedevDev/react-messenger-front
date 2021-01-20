@@ -18,6 +18,7 @@ export function useFormikInput<fieldsName extends string>(
 
     const isError = Boolean(formik.touched[name] &&
                             formik.errors[name])
+
     return (
       <TextField
         {...defaultInputProps}

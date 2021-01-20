@@ -15,7 +15,8 @@ const useStyles = makeStyles({
 })
 
 export const WhiteWindow:FunctionComponent = ({children}) => {
-  const classes = useStyles();
+
+  const classes = useStyles()
 
   return (
     <div className={classes.whiteWindow}>
