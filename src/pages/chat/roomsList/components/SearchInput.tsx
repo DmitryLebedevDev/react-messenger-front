@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
+import React, { FunctionComponent, useRef, useState } from 'react'
 import { makeStyles } from '@material-ui/core'
 import CloseIcon from '@material-ui/icons/Close'
 import cn from 'classnames'
@@ -59,11 +59,9 @@ const useStyles = makeStyles({
     cursor: 'text'
   },
   placeholderOff: {
+    visibility: 'hidden',
     opacity: 0,
     transform: 'translateY(-50%) translateX(100%)',
-  },
-  placeholderDisplayNone: {
-    zIndex: -1,
   }
 })
 
@@ -74,9 +72,6 @@ interface Iprops {
 export const SearchInput:FunctionComponent<Iprops> = ({className}) => {
   const inputRef = useRef<HTMLInputElement|null>(null);
   const [value, setValue] = useState('');
-  const [isHidePlaseholder, setIsHidePlaseholder] = useState(false);
-
-  useEffect(() => {!value && setIsHidePlaseholder(false)}, [value])
 
   const classes = useStyles();
 
@@ -90,15 +85,13 @@ export const SearchInput:FunctionComponent<Iprops> = ({className}) => {
       />
       <div className={cn(
           classes.placeholder,
-        {[classes.placeholderOff]: !!value,
-         [classes.placeholderDisplayNone]: isHidePlaseholder
-        })}
-        onTransitionEndCapture={e => !!value && setIsHidePlaseholder(true)}
+        {[classes.placeholderOff]: !!value}
+        )}
         onMouseDown={(e) => {inputRef.current?.focus(); e.preventDefault()}}
       >
         Поиск
       </div>
-      <div onClick={(e) => setValue('')}>
+      <div onClick={() => setValue('')}>
         <CloseIcon
           className={
             cn(
