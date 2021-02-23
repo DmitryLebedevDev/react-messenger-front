@@ -10,22 +10,17 @@ export function createEffectStatus<Params, Done, Fail>
 (effect: Effect<Params, Done, Fail>): EffectStatus<Done, Fail>
 export function createEffectStatus<Params, Done, Fail, State>
 (effect: Effect<Params, Done, Fail>, $outStore: Store<State>): EffectStatus<State, Fail>
-export function createEffectStatus(effect: any, $outStore: any = undefined) {
+export function createEffectStatus(
+  effect: any, $outStore = restore(effect.doneData, null)
+) {
   const $effectError = restore(effect.failData, null);
         $effectError.reset(effect.done);
 
-  const combineEffectState = (store:any) => combine({
+  const combineEffectState = (store: typeof $outStore) => combine({
     pending: effect.pending,
     error: $effectError,
     data: store
   })
 
-  switch(typeof $outStore) {
-    case 'undefined': {
-      const doneDataStore = restore(effect.doneData, null);
-
-      return combineEffectState(doneDataStore);
-    }
-    default: return combineEffectState($outStore)
-  }
+  return combineEffectState($outStore)
 }
