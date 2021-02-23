@@ -8,6 +8,9 @@ const useStyles = makeStyles({
     height: '100vh',
     display: 'grid',
     gridTemplateColumns: '320px 1fr',
+    '@media (max-width: 768px)': {
+      gridTemplateColumns: '100vw 100vw',
+    }
   }
 })
 

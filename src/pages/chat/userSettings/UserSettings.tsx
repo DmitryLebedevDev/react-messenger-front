@@ -4,7 +4,6 @@ import cn from 'classnames'
 
 const useStyles = makeStyles({
   settings: {
-    zIndex: 2,
     position: 'absolute',
     top: 0,
     left: 0,
@@ -13,12 +12,13 @@ const useStyles = makeStyles({
     background: 'var(--background)',
     transform: 'translateX(-100%)',
     transition: '.2s',
+    zIndex: 3,
   },
   settingsOpen: {
-    transform: 'translateX(0px)'
+    transform: 'translateX(0%)',
   },
   shadow: {
-    zIndex: -1,
+    visibility: 'hidden',
     position: 'absolute',
     top: 0,
     left: 0,
@@ -26,9 +26,10 @@ const useStyles = makeStyles({
     height: '100vh',
     background: '#7c7c7c00',
     transition: '.2s',
+    zIndex: 2,
   },
-  shadowWiew: {
-    zIndex: 1,
+  shadowShow: {
+    visibility: 'visible',
     background: '#7c7c7c75',
   }
 })
@@ -56,7 +57,7 @@ export const UserSettings:FunctionComponent<Iprops> = ({
       </div>
       <div className={cn(
           classes.shadow,
-        {[classes.shadowWiew]: isOpenSettings}
+        {[classes.shadowShow]: isOpenSettings}
         )}
         onClick={closeFn}
       ></div>

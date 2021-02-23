@@ -5,7 +5,10 @@ import { RoomListHeader } from './RoomListHeader'
 
 const useStyles = makeStyles({
   roomList: {
-    borderRight: '1px solid var(--border)'
+    borderRight: '1px solid var(--border)',
+    '@media (max-width: 768px)': {
+      borderRight: 'none',
+    }
   }
 })
 
