@@ -10,6 +10,7 @@ const useStyles = makeStyles({
     width: '320px',
     height: '100vh',
     background: 'var(--background)',
+    boxShadow: '6px 4px 8px rgba(37, 37, 41, 0.07)',
     transform: 'translateX(-100%)',
     transition: '.2s',
     zIndex: 3,
@@ -31,17 +32,17 @@ const useStyles = makeStyles({
   shadowShow: {
     visibility: 'visible',
     background: '#7c7c7c75',
+    cursor: 'pointer',
   }
 })
 
 interface Iprops {
   isOpenSettings: boolean,
-  openFn: () => void,
   closeFn: () => void,
 }
 
 export const UserSettings:FunctionComponent<Iprops> = ({
-  isOpenSettings, openFn, closeFn
+  isOpenSettings, closeFn
 }) => {
   const classes = useStyles()
 
@@ -51,7 +52,6 @@ export const UserSettings:FunctionComponent<Iprops> = ({
           classes.settings,
         {[classes.settingsOpen]: isOpenSettings}
         )}
-        onClick={openFn}
       >
         settings
       </div>

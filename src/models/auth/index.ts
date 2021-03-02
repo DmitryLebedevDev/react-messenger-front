@@ -1,6 +1,6 @@
 import { createEffect, createEvent, createStore } from "effector"
 
-import { createEffectStatus } from '../common/hoc'
+import { createEffectStatus } from '../common/hocs'
 import { IloginDataReq, IquickRegistrationDataReq, IregistrationDataReq, IReqError } from "../../api/api.interface"
 import { Iuser } from "../user/interface"
 import { IquickRegistrationFxNextStep } from "./interface"
