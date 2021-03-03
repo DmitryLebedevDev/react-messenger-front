@@ -4,5 +4,5 @@ const userRooms   = createStore({});
 const searchRooms = createStore({});
 
 export const $rooms = createStore({
-
+  
 });

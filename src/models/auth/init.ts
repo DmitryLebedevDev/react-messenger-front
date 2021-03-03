@@ -1,6 +1,6 @@
 import { forward, Unit } from 'effector'
 
-import { $isAuth, authEvent, authFx, loginFx, logoutEvet, quickRegistrationFx, registrationFx } from './'
+import { $isAuth, authEvent, authFx, loginFx, logoutEvent, quickRegistrationFx, registrationFx } from './'
 import { authUserReq, changeAuthTokenForRequests, loginReq, quickRegistrationReq, registrationReq } from '../../api/api'
 import { setUserEvent } from '../user'
 
@@ -82,7 +82,7 @@ $isAuth.on(
 )
 $isAuth.on(
   [
-    logoutEvet,
+    logoutEvent,
     authFx.fail,
   ] as Unit<any>[],
   () => false

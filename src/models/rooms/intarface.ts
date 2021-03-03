@@ -11,6 +11,9 @@ export interface IcardRoom {
   createrId: number,
   avatarId: string | null
 }
+export interface IcardsRoomsStore {
+  [index: number]: IcardRoom;
+}
 
 export interface Imessage {
   id: number,

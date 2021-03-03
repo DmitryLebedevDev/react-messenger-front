@@ -6,7 +6,7 @@ import { Iuser } from "../user/interface"
 import { IquickRegistrationFxNextStep } from "./interface"
 
 export const authEvent = createEvent()
-export const logoutEvet = createEvent()
+export const logoutEvent = createEvent()
 export const $isAuth = createStore<boolean | null>(null)
 
 export const authFx = createEffect<
