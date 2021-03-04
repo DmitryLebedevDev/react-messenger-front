@@ -1,4 +1,5 @@
 import axios, { AxiosResponse } from 'axios'
+import { IcardRoom } from '../models/rooms/intarface'
 
 import { Iuser } from '../models/user/interface'
 import { IloginDataReq, IloginDataRes, IquickRegistrationDataReq, IquickRegistrationDataRes, IregistrationDataReq, IregistrationDataRes } from './api.interface'
@@ -50,5 +51,11 @@ export const registrationReq = (data: IregistrationDataReq) => (
 export const loginReq = (data: IloginDataReq) => (
   getDataOfRequest(
     api.post<IloginDataRes>('/auth/login', data)
+  )
+)
+
+export const getCardsRoomsUserReq = (userId: number) => (
+  getDataOfRequest(
+    api.get<IcardRoom[]>(`/room/getUserRoomWidthRole/${userId}`)
   )
 )

@@ -1,12 +1,13 @@
 import { createEvent, createStore } from "effector"
-import { IcardRoom, IcardsRoomsStore, Imessage,  } from "./intarface"
+import { IcardRoom, IcardsRoomsStore, Imessage } from "./intarface"
 
-export const $createCardsRoomsStore = () => {
+export const createCardsRoomsStore = () => {
   const addCardsRoomsEvent        = createEvent<IcardRoom[]>();
+  const setCardsRoomsEvent        = createEvent<IcardRoom[]>();
   const deleteCardsRoomsEvent     = createEvent<number[]>();
   const addMessageInCardRoomEvent = createEvent<Imessage>();
 
-  const $cardsRoomsStore      = createStore<IcardsRoomsStore>({});
+  const $cardsRoomsStore          = createStore<IcardsRoomsStore>({});
 
   $cardsRoomsStore
   .on(
@@ -38,4 +39,12 @@ export const $createCardsRoomsStore = () => {
       return {...store};
     }
   )
+
+  return {
+    $cardsRoomsStore,
+    setCardsRoomsEvent,
+    addCardsRoomsEvent,
+    deleteCardsRoomsEvent,
+    addMessageInCardRoomEvent
+  }
 }

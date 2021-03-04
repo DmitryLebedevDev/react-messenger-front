@@ -12,7 +12,7 @@ export interface IcardRoom {
   avatarId: string | null
 }
 export interface IcardsRoomsStore {
-  [index: number]: IcardRoom;
+  [index: number]: IcardRoom
 }
 
 export interface Imessage {
