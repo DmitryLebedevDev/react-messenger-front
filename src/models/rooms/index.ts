@@ -34,3 +34,21 @@ export const $getCardsRoomsUFxStatus = createEffectStatus(getCardsRoomsUFx, $roo
 
 export const getCardsRoomsSFx        = createEffect<string, IcardRoom[]>()
 export const $getCardsRoomsSFxStatus = createEffectStatus(getCardsRoomsUFx, $rooms)
+
+export const $currentRoomsInfo = combine({
+   $rooms,
+   getCardsRoomsSFxPending:getCardsRoomsSFx.pending,
+   getCardsRoomsUFxPending:getCardsRoomsUFx.pending,
+   getCardsRoomsSFxError: getCardsRoomsSFx.failData,
+   getCardsRoomsUFxError: getCardsRoomsUFx.failData,
+  },
+  ({
+    $rooms,
+    getCardsRoomsSFxPending,getCardsRoomsUFxPending,
+    getCardsRoomsSFxError,getCardsRoomsUFxError
+  }) => ({
+    pending: getCardsRoomsSFxPending || getCardsRoomsUFxPending,
+    error: getCardsRoomsSFxError || getCardsRoomsUFxError,
+    rooms: $rooms
+  })
+)
