@@ -1,8 +1,8 @@
 import { combine, Effect, restore, Store } from "effector"
 
 type EffectStatus<State, Fail = Error> = Store<{
-  pending: boolean;
-  error: Fail | null;
+  pending: boolean
+  error: Fail | null
   data: State | null
 }>
 
@@ -13,8 +13,8 @@ export function createEffectStatus<Params, Done, Fail, State>
 export function createEffectStatus(
   effect: any, $outStore = restore(effect.doneData, null)
 ) {
-  const $effectError = restore(effect.failData, null);
-        $effectError.reset(effect.done);
+  const $effectError = restore(effect.failData, null)
+        $effectError.reset(effect.done)
 
   const combineEffectState = (store: typeof $outStore) => combine({
     pending: effect.pending,

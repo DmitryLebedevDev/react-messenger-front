@@ -12,7 +12,7 @@ export const changeAuthTokenForRequests = (token: string) => {
   Object.assign(api.defaults.headers, {
     Authorization: `Bearer ${token}`
   })
-  return api;
+  return api
 }
 const getDataOfRequest = <T>(response: Promise<AxiosResponse<T>>) => (
   response
@@ -23,7 +23,7 @@ const getDataOfRequest = <T>(response: Promise<AxiosResponse<T>>) => (
           response
           :
           `{"message": "Request failed, please try again"}`
-      );
+      )
 
       return Promise.reject({
         status,

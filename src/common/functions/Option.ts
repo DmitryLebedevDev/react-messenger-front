@@ -1,13 +1,13 @@
-export type Option<T> = Some<T> | None;
+export type Option<T> = Some<T> | None
 
 export class Some<T> {
   private value:T
   constructor(value: T) {
-    this.value = value;
+    this.value = value
   }
 
   get v() {
-    return this.value;
+    return this.value
   }
 }
 

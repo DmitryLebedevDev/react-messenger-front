@@ -1,24 +1,38 @@
 import { forward, Unit } from 'effector'
 
-import { $isAuth, authEvent, authFx, loginFx, logoutEvent, quickRegistrationFx, registrationFx } from './'
-import { authUserReq, changeAuthTokenForRequests, loginReq, quickRegistrationReq, registrationReq } from '../../api/api'
+import {
+  $isAuth,
+  authEvent,
+  authFx,
+  loginFx,
+  logoutEvent,
+  quickRegistrationFx,
+  registrationFx
+} from './'
+import {
+  authUserReq,
+  changeAuthTokenForRequests,
+  loginReq,
+  quickRegistrationReq,
+  registrationReq
+} from '../../api/api'
 import { setUserEvent } from '../user'
 
 const setJwtTokenInLocalStorage = (jwtToken: string) => {
-  localStorage.setItem('jwtToken', jwtToken);
+  localStorage.setItem('jwtToken', jwtToken)
 }
 const getJwtTokenOfLocalStorage = () => {
-  return localStorage.getItem('jwtToken');
+  return localStorage.getItem('jwtToken')
 }
 
 authFx.use(async (token) => {
-  const jwtToken = token || getJwtTokenOfLocalStorage();
+  const jwtToken = token || getJwtTokenOfLocalStorage()
 
   if(jwtToken) {
     changeAuthTokenForRequests(jwtToken)
     const user = await authUserReq()
 
-    return user;
+    return user
   } else
     throw new Error('no auth')
 })
@@ -29,8 +43,8 @@ registrationFx.use(async data => {
     ...user
   } = await registrationReq(data)
 
-  setJwtTokenInLocalStorage(access_token);
-  changeAuthTokenForRequests(access_token);
+  setJwtTokenInLocalStorage(access_token)
+  changeAuthTokenForRequests(access_token)
 
   return user
 })
@@ -41,14 +55,14 @@ quickRegistrationFx.use(async data => {
     password,
     access_token,
     ...user
-  } = await quickRegistrationReq(data);
+  } = await quickRegistrationReq(data)
 
-  setJwtTokenInLocalStorage(access_token);
-  changeAuthTokenForRequests(access_token);
+  setJwtTokenInLocalStorage(access_token)
+  changeAuthTokenForRequests(access_token)
 
   const next = () => {
-    setUserEvent({email,...user});
-    authEvent();
+    setUserEvent({email,...user})
+    authEvent()
   }
 
   return {

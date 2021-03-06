@@ -1,6 +1,7 @@
-import { combine, createEffect, createEvent, createStore } from "effector";
-import { createEffectStatus } from "../common/hocs";
-import { createCardsRoomsStore } from "./createCardsRoomsStore";
+import { combine, createEffect, createEvent, createStore } from "effector"
+
+import { createEffectStatus } from "../common/hocs"
+import { createCardsRoomsStore } from "./createCardsRoomsStore"
 import { IcardRoom, roomsStatus } from "./intarface"
 
 export const {
@@ -8,7 +9,7 @@ export const {
   setCardsRoomsEvent: setCardsRoomsUEvent,
   deleteCardsRoomsEvent: deleteCardsRoomsUEvent,
   addMessageInCardRoomEvent: addMessageInCardRoomUEvent
-} = createCardsRoomsStore();
+} = createCardsRoomsStore()
 
 export const {
   $cardsRoomsStore: $searchCardsRooms,
@@ -27,7 +28,7 @@ export const $rooms = combine(
     return $roomStatus === roomsStatus.userRoom ?
       $userCardsRooms : $searchCardsRooms
   }
-);
+)
 
 export const getCardsRoomsUFx        = createEffect<number, IcardRoom[]>()
 export const $getCardsRoomsUFxStatus = createEffectStatus(getCardsRoomsUFx, $rooms)

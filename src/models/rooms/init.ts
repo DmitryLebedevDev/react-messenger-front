@@ -1,3 +1,5 @@
+import { forward } from "effector"
+
 import {
   $roomStatus,
   activeSearchRoomsEvent,
@@ -7,7 +9,6 @@ import {
 } from "."
 import { roomsStatus } from "./intarface"
 import { getCardsRoomsUserReq } from '../../api/api'
-import { forward } from "effector"
 import { setUserEvent } from "../user"
 
 getCardsRoomsUFx.use(async (userId) => {
