@@ -20,6 +20,8 @@ code {
 }
 
 :root {
+  --primary: #1976d2;
+  --secondary: #dc004e;
   --border: #E4E3E2;
   --outline-input: #39C3F0;
   --color-input: #999999;

@@ -1,6 +1,6 @@
-import { createEvent, createStore } from "effector"
+import { createEvent, createStore } from 'effector'
 
-import { IcardRoom, IcardsRoomsStore, Imessage } from "./intarface"
+import { IcardRoom, IcardsRoomsStore, Imessage } from './intarface'
 
 export const createCardsRoomsStore = () => {
   const addCardsRoomsEvent        = createEvent<IcardRoom[]>()

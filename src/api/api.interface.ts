@@ -24,7 +24,7 @@ export interface IregistrationDataRes {
   firstName: string,
   lastName: string,
   email: string,
-  avatarId: string | null,
+  avatarId?: string,
   access_token: string
 }
 export interface IReqError {

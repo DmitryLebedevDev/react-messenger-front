@@ -20,14 +20,14 @@ interface Iprops {
 const RoomsListFC:FunctionComponent<Iprops> = ({
   openSettingsFn
 }) => {
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
     <div className={classes.roomList}>
       <RoomsListHeader openSettingsFn={openSettingsFn}/>
-      <RoomsListBody/>
+      <RoomsListBody />
     </div>
   )
 }
 
-export const RoomsList = React.memo(RoomsListFC);
+export const RoomsList = React.memo(RoomsListFC)

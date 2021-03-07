@@ -32,7 +32,7 @@ authFx.use(async (token) => {
     changeAuthTokenForRequests(jwtToken)
     const user = await authUserReq()
 
-    setUserEvent(user);
+    setUserEvent(user)
     return user
   } else
     throw new Error('no auth')
@@ -47,7 +47,7 @@ registrationFx.use(async data => {
   setJwtTokenInLocalStorage(access_token)
   changeAuthTokenForRequests(access_token)
 
-  setUserEvent(user);
+  setUserEvent(user)
   return user
 })
 

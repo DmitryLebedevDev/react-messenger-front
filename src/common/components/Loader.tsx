@@ -16,7 +16,7 @@ const useStyles = makeStyles({
 
 
 export const Loader:React.FunctionComponent = () => {
-  const classes = useStyles();
+  const classes = useStyles()
 
   return <div className={classes.wrap}>
     <CircularProgress />

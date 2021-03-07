@@ -1,4 +1,4 @@
-import { authFx, logoutEvent, registrationFx } from '../auth'
+import { logoutEvent } from '../auth'
 import { $user, setUserEvent } from './'
 
 $user

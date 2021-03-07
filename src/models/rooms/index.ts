@@ -1,8 +1,8 @@
-import { combine, createEffect, createEvent, createStore } from "effector"
+import { combine, createEffect, createEvent, createStore } from 'effector'
 
-import { createEffectStatus } from "../common/hocs"
-import { createCardsRoomsStore } from "./createCardsRoomsStore"
-import { IcardRoom, roomsStatus } from "./intarface"
+import { createEffectStatus } from '../common/hocs'
+import { createCardsRoomsStore } from './createCardsRoomsStore'
+import { IcardRoom, roomsStatus } from './intarface'
 
 export const {
   $cardsRoomsStore: $userCardsRooms,

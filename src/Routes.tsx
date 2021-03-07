@@ -1,7 +1,7 @@
 import React from 'react'
 import { Redirect, Route, Switch } from 'react-router-dom'
 
-import { Loader } from './common/components/loader'
+import { Loader } from './common/components/Loader'
 import { AuthContainer } from './pages/auth/AuthContainer'
 import { Chat } from './pages/chat/Chat'
 

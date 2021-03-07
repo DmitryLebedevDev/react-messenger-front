@@ -1,4 +1,4 @@
-import { forward } from "effector"
+import { forward } from 'effector'
 
 import {
   $roomStatus,
@@ -9,10 +9,10 @@ import {
   getCardsRoomsUFx,
   setCardsRoomsSEvent,
   setCardsRoomsUEvent
-} from "."
-import { roomsStatus } from "./intarface"
+} from '.'
+import { roomsStatus } from './intarface'
 import { getCardsRoomsUserReq, getSimilarRoomsReq } from '../../api/api'
-import { setUserEvent } from "../user"
+import { setUserEvent } from '../user'
 
 getCardsRoomsUFx.use(async (userId) => {
   return getCardsRoomsUserReq(userId)
@@ -27,7 +27,7 @@ forward({
 })
 
 getCardsRoomsSFx.use(async (nameRoom: string) => {
-  return getSimilarRoomsReq(nameRoom);
+  return getSimilarRoomsReq(nameRoom)
 })
 forward({
   from: getCardsRoomsSFx.doneData,

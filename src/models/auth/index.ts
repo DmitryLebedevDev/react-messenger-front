@@ -1,4 +1,4 @@
-import { createEffect, createEvent, createStore } from "effector"
+import { createEffect, createEvent, createStore } from 'effector'
 
 import { createEffectStatus } from '../common/hocs'
 import {
@@ -6,9 +6,9 @@ import {
   IquickRegistrationDataReq,
   IregistrationDataReq,
   IReqError
-} from "../../api/api.interface"
-import { Iuser } from "../user/interface"
-import { IquickRegistrationFxNextStep } from "./interface"
+} from '../../api/api.interface'
+import { Iuser } from '../user/interface'
+import { IquickRegistrationFxNextStep } from './interface'
 
 export const authEvent = createEvent()
 export const logoutEvent = createEvent()
@@ -25,14 +25,14 @@ export const registrationFx = createEffect<
   IregistrationDataReq,
   Iuser,
   IReqError
->();
+>()
 export const $registrationFxStatus = createEffectStatus(registrationFx)
 
 export const quickRegistrationFx = createEffect<
   IquickRegistrationDataReq,
   IquickRegistrationFxNextStep,
   IReqError
->();
+>()
 export const $quickRegistrationFxStatus = createEffectStatus(quickRegistrationFx)
 
 export const loginFx = createEffect<

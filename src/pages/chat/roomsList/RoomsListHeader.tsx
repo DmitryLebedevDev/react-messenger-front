@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import { IconButton, makeStyles } from '@material-ui/core'
-import MenuIcon from '@material-ui/icons/Menu';
+import MenuIcon from '@material-ui/icons/Menu'
 
 import { SearchInput } from './components/SearchInput'
 
@@ -10,7 +10,6 @@ const useStyles = makeStyles({
     alignItems: 'center',
     gridTemplateColumns: '60px 1fr',
     height: 66,
-    border: '1px solid red',
   },
   menu: {
     justifySelf: 'center',
@@ -37,7 +36,7 @@ interface Iprops {
 export const RoomsListHeader:FunctionComponent<Iprops> = ({
   openSettingsFn
 }) => {
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
     <div className={classes.roomListHeader}>

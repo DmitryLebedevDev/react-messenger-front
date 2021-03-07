@@ -1,19 +1,16 @@
-import React, { FunctionComponent } from "react";
-import { useStore } from "effector-react";
-import { Button, CircularProgress } from "@material-ui/core";
+import React, { FunctionComponent } from 'react'
+import { useStore } from 'effector-react'
+import { CircularProgress } from '@material-ui/core'
 
-import { $currentRoomsInfo } from "../../../models/rooms";
-import { RoomsListCard } from "./RoomsListCard";
+import { $currentRoomsInfo } from '../../../models/rooms'
+import { RoomsListCard } from './RoomsListCard'
 
 const RoomsListBodyFC:FunctionComponent = () => {
-  const {pending, error, rooms} = useStore($currentRoomsInfo);
+  const {pending, rooms} = useStore($currentRoomsInfo)
 
   return <div>{
     pending ?
       <CircularProgress />
-      :
-    error ?
-      'ошибка'
       :
       Object
         .values(rooms)
@@ -21,4 +18,4 @@ const RoomsListBodyFC:FunctionComponent = () => {
   }</div>
 }
 
-export const RoomsListBody = React.memo(RoomsListBodyFC);
+export const RoomsListBody = React.memo(RoomsListBodyFC)

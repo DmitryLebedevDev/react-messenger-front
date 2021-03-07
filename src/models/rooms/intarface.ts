@@ -9,7 +9,7 @@ export interface IcardRoom {
   role: Irole,
   messages: Imessage[],
   createrId: number,
-  avatarId: string | null
+  avatarId?: string
 }
 
 export type IcardsRoomsStore = Record<number,IcardRoom>
