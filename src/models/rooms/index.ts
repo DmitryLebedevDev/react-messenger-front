@@ -38,18 +38,16 @@ export const $getCardsRoomsSFxStatus = createEffectStatus(getCardsRoomsUFx, $roo
 
 export const $currentRoomsInfo = combine({
    $rooms,
-   getCardsRoomsSFxPending:getCardsRoomsSFx.pending,
-   getCardsRoomsUFxPending:getCardsRoomsUFx.pending,
-   getCardsRoomsSFxError: getCardsRoomsSFx.failData,
-   getCardsRoomsUFxError: getCardsRoomsUFx.failData,
+   $getCardsRoomsUFxStatus,
+   $getCardsRoomsSFxStatus
   },
   ({
     $rooms,
-    getCardsRoomsSFxPending,getCardsRoomsUFxPending,
-    getCardsRoomsSFxError,getCardsRoomsUFxError
+    $getCardsRoomsUFxStatus,
+    $getCardsRoomsSFxStatus
   }) => ({
-    pending: getCardsRoomsSFxPending || getCardsRoomsUFxPending,
-    error: getCardsRoomsSFxError || getCardsRoomsUFxError,
+    pending: $getCardsRoomsUFxStatus.pending || $getCardsRoomsSFxStatus.pending,
+    error: $getCardsRoomsUFxStatus.error || $getCardsRoomsSFxStatus.error,
     rooms: $rooms
   })
 )

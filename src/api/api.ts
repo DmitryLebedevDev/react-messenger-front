@@ -59,3 +59,8 @@ export const getCardsRoomsUserReq = (userId: number) => (
     api.get<IcardRoom[]>(`/room/getUserRoomWidthRole/${userId}`)
   )
 )
+export const getSimilarRoomsReq = (nameRoom: string) => (
+  getDataOfRequest(
+    api.get<IcardRoom[]>(`/room/search?q=${nameRoom}`)
+  )
+)

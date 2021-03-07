@@ -34,7 +34,7 @@ interface Iprops {
   openSettingsFn: () => void,
 }
 
-export const RoomListHeader:FunctionComponent<Iprops> = ({
+export const RoomsListHeader:FunctionComponent<Iprops> = ({
   openSettingsFn
 }) => {
   const classes = useStyles();

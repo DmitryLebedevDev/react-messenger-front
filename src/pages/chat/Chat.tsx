@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { makeStyles } from '@material-ui/core'
-import { RoomList } from './roomsList/RoomList'
+import { RoomsList } from './roomsList/RoomsList'
 import { UserSettings } from './userSettings/UserSettings'
 
 const useStyles = makeStyles({
@@ -25,7 +25,7 @@ export const Chat = () => {
         isOpenSettings={isOpenSettings}
         closeFn={() => setIsOpenSettings(false)}
       />
-      <RoomList
+      <RoomsList
         openSettingsFn={() => setIsOpenSettings(true)}
       />
     </div>

@@ -3,11 +3,7 @@ import { $user, setUserEvent } from './'
 
 $user
   .on(
-    [
-      setUserEvent,
-      authFx.doneData,
-      registrationFx.doneData
-    ],
+    setUserEvent,
     (_,user) => user
   )
   .reset(logoutEvent)

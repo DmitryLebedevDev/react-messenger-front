@@ -1,7 +1,8 @@
 import React, { FunctionComponent } from 'react'
 import { makeStyles } from '@material-ui/core'
 
-import { RoomListHeader } from './RoomListHeader'
+import { RoomsListHeader } from './RoomsListHeader'
+import { RoomsListBody } from './RoomsListBody'
 
 const useStyles = makeStyles({
   roomList: {
@@ -16,16 +17,17 @@ interface Iprops {
   openSettingsFn: () => void,
 }
 
-const RoomListFC:FunctionComponent<Iprops> = ({
+const RoomsListFC:FunctionComponent<Iprops> = ({
   openSettingsFn
 }) => {
   const classes = useStyles();
 
   return (
     <div className={classes.roomList}>
-      <RoomListHeader openSettingsFn={openSettingsFn}/>
+      <RoomsListHeader openSettingsFn={openSettingsFn}/>
+      <RoomsListBody/>
     </div>
   )
 }
 
-export const RoomList = React.memo(RoomListFC);
+export const RoomsList = React.memo(RoomsListFC);

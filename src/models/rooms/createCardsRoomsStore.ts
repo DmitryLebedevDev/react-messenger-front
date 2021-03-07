@@ -10,15 +10,31 @@ export const createCardsRoomsStore = () => {
 
   const $cardsRoomsStore          = createStore<IcardsRoomsStore>({})
 
+  const addCardToStore = (
+    store: IcardsRoomsStore, cardRoom: IcardRoom
+  ) => {
+    store[cardRoom.id] = cardRoom
+
+    return store
+  }
+
   $cardsRoomsStore
+  .on(
+    setCardsRoomsEvent,
+    (_, cardsRooms) => (
+      cardsRooms.reduce(
+        addCardToStore,
+        {} as IcardsRoomsStore
+      )
+    )
+  )
   .on(
     addCardsRoomsEvent,
     (store, cardsRooms) => (
-      cardsRooms.reduce((store, cardRoom) => {
-        store[cardRoom.id] = cardRoom
-
-        return store
-      }, {...store})
+      cardsRooms.reduce(
+        addCardToStore,
+        {...store}
+      )
     )
   )
   .on(
