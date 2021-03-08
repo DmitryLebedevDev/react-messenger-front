@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React, { FC } from 'react'
 import { IconButton, makeStyles } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
 
@@ -30,18 +30,18 @@ const useStyles = makeStyles({
 })
 
 interface Iprops {
-  openSettingsFn: () => void,
+  openMenuFn: () => void,
 }
 
-export const RoomsListHeader:FunctionComponent<Iprops> = ({
-  openSettingsFn
+export const RoomsListHeader:FC<Iprops> = ({
+  openMenuFn
 }) => {
   const classes = useStyles()
 
   return (
     <div className={classes.roomListHeader}>
       <div className={classes.menu}>
-        <IconButton onClick={openSettingsFn}>
+        <IconButton onClick={openMenuFn}>
           <MenuIcon />
         </IconButton>
       </div>

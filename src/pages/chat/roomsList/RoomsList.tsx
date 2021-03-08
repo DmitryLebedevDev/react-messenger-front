@@ -1,8 +1,10 @@
-import React, { FunctionComponent } from 'react'
+import React, { FC } from 'react'
 import { makeStyles } from '@material-ui/core'
+import { useStore } from 'effector-react'
 
 import { RoomsListHeader } from './RoomsListHeader'
 import { RoomsListBody } from './RoomsListBody'
+import { $currentRoomsInfo } from '../../../models/rooms'
 
 const useStyles = makeStyles({
   roomList: {
@@ -14,18 +16,20 @@ const useStyles = makeStyles({
 })
 
 interface Iprops {
-  openSettingsFn: () => void,
+  openMenuFn: () => void,
 }
 
-const RoomsListFC:FunctionComponent<Iprops> = ({
-  openSettingsFn
+const RoomsListFC:FC<Iprops> = ({
+  openMenuFn
 }) => {
+  const { pending, rooms } = useStore($currentRoomsInfo)
+
   const classes = useStyles()
 
   return (
     <div className={classes.roomList}>
-      <RoomsListHeader openSettingsFn={openSettingsFn}/>
-      <RoomsListBody />
+      <RoomsListHeader openMenuFn={openMenuFn}/>
+      <RoomsListBody pending={pending} rooms={Object.values(rooms)}/>
     </div>
   )
 }

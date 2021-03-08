@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React, { FC } from 'react'
 import { Button, makeStyles } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 import * as Yup from 'yup'
@@ -27,7 +27,7 @@ const useStyles = makeStyles({
   ...commonAuthStyles
 })
 
-export const QuickRegistrationForm:FunctionComponent<Iprops> = (
+export const QuickRegistrationForm:FC<Iprops> = (
   {pending, error}
 ) => {
   const quickRegistrationDataInit: IquickRegistrationDataReq = {

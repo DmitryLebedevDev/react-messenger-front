@@ -1,6 +1,6 @@
 import { createEffect, createEvent, createStore } from 'effector'
 
-import { createEffectStatus } from '../common/hocs'
+import { createEffectStatus } from '../common/hocs/createEffectStatus'
 import {
   IloginDataReq,
   IquickRegistrationDataReq,

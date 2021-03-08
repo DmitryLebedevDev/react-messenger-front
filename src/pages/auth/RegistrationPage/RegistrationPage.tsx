@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useRef } from 'react'
+import React, { FC, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { Button, makeStyles } from '@material-ui/core'
 import { useFormik } from 'formik'
@@ -41,7 +41,7 @@ const registrationSchema = Yup.object().shape({
     .required(textErrorRequiredField)
 })
 
-export const RegistrationPage:FunctionComponent = () => {
+export const RegistrationPage:FC = () => {
   const {pending, error} = useStore($registrationFxStatus)
 
   const registrationDataInit = {

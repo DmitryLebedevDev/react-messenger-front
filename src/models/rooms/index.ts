@@ -1,6 +1,6 @@
 import { combine, createEffect, createEvent, createStore } from 'effector'
 
-import { createEffectStatus } from '../common/hocs'
+import { createEffectStatus } from '../common/hocs/createEffectStatus'
 import { createCardsRoomsStore } from './createCardsRoomsStore'
 import { IcardRoom, roomsStatus } from './intarface'
 
@@ -33,7 +33,10 @@ export const $rooms = combine(
 export const getCardsRoomsUFx        = createEffect<number, IcardRoom[]>()
 export const $getCardsRoomsUFxStatus = createEffectStatus(getCardsRoomsUFx, $rooms)
 
-export const getCardsRoomsSFx        = createEffect<string, IcardRoom[]>()
+export const getCardsRoomsSFx        = createEffect<{
+                                         q: string,
+                                         isCancel: (q: string) => boolean
+                                       }, IcardRoom[]>()
 export const $getCardsRoomsSFxStatus = createEffectStatus(getCardsRoomsUFx, $rooms)
 
 export const $currentRoomsInfo = combine({

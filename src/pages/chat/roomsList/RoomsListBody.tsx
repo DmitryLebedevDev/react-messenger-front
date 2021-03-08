@@ -1,12 +1,16 @@
-import React, { FunctionComponent } from 'react'
-import { useStore } from 'effector-react'
+import React, { FC } from 'react'
 import { CircularProgress } from '@material-ui/core'
 
-import { $currentRoomsInfo } from '../../../models/rooms'
 import { RoomsListCard } from './RoomsListCard'
+import { IcardRoom } from '../../../models/rooms/intarface'
 
-const RoomsListBodyFC:FunctionComponent = () => {
-  const {pending, rooms} = useStore($currentRoomsInfo)
+interface Iprops {
+  pending: boolean,
+  rooms: IcardRoom[]
+}
+
+const RoomsListBodyFC:FC<Iprops> = (props) => {
+  const {pending, rooms} = props;
 
   return <div>{
     pending ?

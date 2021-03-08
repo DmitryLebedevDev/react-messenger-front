@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { FC, useState } from 'react'
 import { Button, makeStyles } from '@material-ui/core'
 import cn from 'classnames'
 
@@ -28,7 +28,7 @@ const useStyles = makeStyles({
   }
 })
 
-export const QuickRegistrationData: React.FunctionComponent<Iprops>
+export const QuickRegistrationData:FC<Iprops>
 = (props) => {
   const [isSavedData, setIsSavedData] = useState(false);
   const saveDataFn = () => {

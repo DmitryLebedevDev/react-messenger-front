@@ -1,11 +1,11 @@
-import React, { FunctionComponent, useEffect } from 'react'
+import React, { FC, useEffect } from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import { useStore } from 'effector-react'
 
 import { $isAuth, authFx } from './models/auth'
 import { useRoutes } from './Routes'
 
-const App:FunctionComponent = () => {
+const App:FC = () => {
   useEffect(() => {authFx()}, [])
   const isAuth = useStore($isAuth)
 
@@ -14,7 +14,7 @@ const App:FunctionComponent = () => {
   return routes
 }
 
-const AppWithHocs:FunctionComponent = () => (
+const AppWithHocs:FC = () => (
   <BrowserRouter>
     <App/>
   </BrowserRouter>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { CircularProgress, makeStyles } from '@material-ui/core'
 
 const useStyles = makeStyles({
@@ -15,7 +15,7 @@ const useStyles = makeStyles({
 })
 
 
-export const Loader:React.FunctionComponent = () => {
+export const Loader:FC = () => {
   const classes = useStyles()
 
   return <div className={classes.wrap}>

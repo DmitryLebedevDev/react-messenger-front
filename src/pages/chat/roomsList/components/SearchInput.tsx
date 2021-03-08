@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useRef, useState } from 'react'
+import React, { FC, useRef, useState } from 'react'
 import { makeStyles } from '@material-ui/core'
 import CloseIcon from '@material-ui/icons/Close'
 import cn from 'classnames'
@@ -66,19 +66,25 @@ const useStyles = makeStyles({
 })
 
 interface Iprops {
-  className?: string
+  className?: string,
+  change?: (q: string) => void
 }
 
-export const SearchInput:FunctionComponent<Iprops> = ({className}) => {
+export const SearchInput:FC<Iprops> = ({className, change}) => {
   const inputRef = useRef<HTMLInputElement|null>(null);
   const [value, setValue] = useState('');
+
+  const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value);
+    change && change(e.target.value)
+  }
 
   const classes = useStyles();
 
   return (
     <div className={classes.inputWrap}>
       <input
-        onChange={e => setValue(e.target.value)}
+        onChange={onChangeInput}
         ref={inputRef}
         value={value}
         className={cn(classes.input, className)}

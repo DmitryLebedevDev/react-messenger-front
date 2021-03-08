@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React, { FC } from 'react'
 import { makeStyles } from '@material-ui/core'
 
 const useStyles = makeStyles({
@@ -14,7 +14,7 @@ const useStyles = makeStyles({
   }
 })
 
-export const WhiteWindow:FunctionComponent = ({children}) => {
+export const WhiteWindow:FC = ({children}) => {
 
   const classes = useStyles()
 

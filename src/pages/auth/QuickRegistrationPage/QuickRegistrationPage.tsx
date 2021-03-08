@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React, { FC } from 'react'
 import { makeStyles } from '@material-ui/core'
 import cn from 'classnames'
 
@@ -26,9 +26,8 @@ const useStyles = makeStyles({
   }
 })
 
-export const QuickRegistrationPage:FunctionComponent = () => {
+export const QuickRegistrationPage:FC = () => {
   const { pending, error, data } = useStore($quickRegistrationFxStatus)
-  console.log(data)
   const classes = useStyles()
 
   return (

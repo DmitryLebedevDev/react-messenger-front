@@ -13,6 +13,7 @@ import {
 import { roomsStatus } from './intarface'
 import { getCardsRoomsUserReq, getSimilarRoomsReq } from '../../api/api'
 import { setUserEvent } from '../user'
+import { CancelEffectError } from '../common/errors/CancelEffectError'
 
 getCardsRoomsUFx.use(async (userId) => {
   return getCardsRoomsUserReq(userId)
@@ -26,8 +27,11 @@ forward({
   to: setCardsRoomsUEvent
 })
 
-getCardsRoomsSFx.use(async (nameRoom: string) => {
-  return getSimilarRoomsReq(nameRoom)
+getCardsRoomsSFx.use(async ({q, isCancel}) => {
+  const cardsRooms = getSimilarRoomsReq(q);
+  isCancel(q) && new CancelEffectError();
+
+  return cardsRooms;
 })
 forward({
   from: getCardsRoomsSFx.doneData,

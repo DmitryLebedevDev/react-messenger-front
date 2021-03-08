@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React, { FC } from 'react'
 import { Redirect, Route } from 'react-router-dom'
 
 import { LoginPage } from './LoginPage/LoginPage'
@@ -7,7 +7,7 @@ import { AuthBg } from './components/AuthBg'
 import { QuickRegistrationPage } from './QuickRegistrationPage/QuickRegistrationPage'
 import { WhiteWindow } from './components/WhiteWindow'
 
-export const AuthContainer:FunctionComponent = () => {
+export const AuthContainer:FC = () => {
   return (
     <AuthBg content="center">
       <WhiteWindow>

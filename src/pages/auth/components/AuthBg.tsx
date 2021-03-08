@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React, { FC } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import cn from 'classnames'
 
@@ -24,7 +24,7 @@ const useStyles = makeStyles({
   }
 })
 
-export const AuthBg:FunctionComponent<Iprops> = ({children, content}) => {
+export const AuthBg:FC<Iprops> = ({children, content}) => {
   const classes = useStyles({urlImage: mountainsImage})
 
   const wrapClasses = cn([

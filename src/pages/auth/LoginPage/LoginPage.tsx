@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React, { FC } from 'react'
 import { Link } from 'react-router-dom'
 import { useFormik } from 'formik'
 import { makeStyles, Button } from '@material-ui/core'
@@ -25,7 +25,7 @@ const loginSchema = Yup.object().shape({
     .required(textErrorRequiredField),
 })
 
-export const LoginPage:FunctionComponent = () => {
+export const LoginPage:FC = () => {
   const { pending, error } = useStore(loginFxStatus)
 
   const loginDataInit = {email: '', password: ''}

@@ -1,9 +1,9 @@
-import React, { FunctionComponent } from 'react'
+import React, { FC } from 'react'
 import { makeStyles } from '@material-ui/core'
 import cn from 'classnames'
 
 const useStyles = makeStyles({
-  settings: {
+  menu: {
     position: 'absolute',
     top: 0,
     left: 0,
@@ -15,7 +15,7 @@ const useStyles = makeStyles({
     transition: '.2s',
     zIndex: 3,
   },
-  settingsOpen: {
+  menuOpen: {
     transform: 'translateX(0%)',
   },
   shadow: {
@@ -37,29 +37,29 @@ const useStyles = makeStyles({
 })
 
 interface Iprops {
-  isOpenSettings: boolean,
-  closeFn: () => void,
+  isOpen: boolean,
+  closeMenuFn: () => void,
 }
 
-export const UserSettings:FunctionComponent<Iprops> = ({
-  isOpenSettings, closeFn
+export const UsersMenu:FC<Iprops> = ({
+  isOpen, closeMenuFn
 }) => {
   const classes = useStyles()
 
   return (
     <>
       <div className={cn(
-          classes.settings,
-        {[classes.settingsOpen]: isOpenSettings}
+          classes.menu,
+        {[classes.menuOpen]: isOpen}
         )}
       >
         settings
       </div>
       <div className={cn(
           classes.shadow,
-        {[classes.shadowShow]: isOpenSettings}
+        {[classes.shadowShow]: isOpen}
         )}
-        onClick={closeFn}
+        onClick={closeMenuFn}
       ></div>
     </>
   )
