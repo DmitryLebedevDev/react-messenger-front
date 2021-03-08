@@ -3,6 +3,7 @@ import { IconButton, makeStyles } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
 
 import { SearchInput } from './components/SearchInput'
+import { useDebounceFn } from '../../../models/common/hooks/useDebounce'
 
 const useStyles = makeStyles({
   roomListHeader: {
@@ -36,7 +37,8 @@ interface Iprops {
 export const RoomsListHeader:FC<Iprops> = ({
   openMenuFn
 }) => {
-  const classes = useStyles()
+  const classes = useStyles();
+  const testFn  = useDebounceFn((str: string) => {console.log(str)}, 500);
 
   return (
     <div className={classes.roomListHeader}>
@@ -46,7 +48,7 @@ export const RoomsListHeader:FC<Iprops> = ({
         </IconButton>
       </div>
       <div className={classes.search}>
-        <SearchInput className={classes.searchInput}/>
+        <SearchInput className={classes.searchInput} change={testFn}/>
       </div>
     </div>
   )

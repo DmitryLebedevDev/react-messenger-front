@@ -43,10 +43,10 @@ export const QuickRegistrationPage:FC = () => {
           error={error}
         />
         {data &&
-         <QuickRegistrationData
-            userData={data.userInfo}
-            next={data.next}
-          />
+        <QuickRegistrationData
+          userData={data.userInfo}
+          next={data.next}
+        />
         }
       </div>
     </div>
