@@ -67,24 +67,40 @@ const useStyles = makeStyles({
 
 interface Iprops {
   className?: string,
+  start?: () => void,
+  end?: () => void
   change?: (q: string) => void
 }
 
-export const SearchInput:FC<Iprops> = ({className, change}) => {
-  const inputRef = useRef<HTMLInputElement|null>(null);
-  const [value, setValue] = useState('');
+export const SearchInput:FC<Iprops> = ({className, start, end, change}) => {
+  const inputRef = useRef<HTMLInputElement|null>(null)
+  const [value, setValue] = useState('')
+  const [isStartInput, setIsStartInput] = useState(false)
 
-  const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
+  const startInput = () => {
+    setIsStartInput(true)
+    start && start()
+  }
+  const endInput = () => {
+    setIsStartInput(false)
+    end && end()
+  }
+  const changeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value)
     change && change(e.target.value)
+
+    if(!isStartInput && e.target.value.length === 1)
+      startInput()
+    if(isStartInput && e.target.value.length === 0)
+      endInput()
   }
 
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
     <div className={classes.inputWrap}>
       <input
-        onChange={onChangeInput}
+        onChange={changeInput}
         ref={inputRef}
         value={value}
         className={cn(classes.input, className)}
@@ -93,11 +109,19 @@ export const SearchInput:FC<Iprops> = ({className, change}) => {
           classes.placeholder,
         {[classes.placeholderOff]: !!value}
         )}
-        onMouseDown={(e) => {inputRef.current?.focus(); e.preventDefault()}}
+        onMouseDown={(e) => {
+          inputRef.current?.focus()
+          e.preventDefault()
+        }}
       >
         Поиск
       </div>
-      <div onClick={() => setValue('')}>
+      <div
+        onClick={() => {
+          setValue('')
+          endInput()
+        }}
+      >
         <CloseIcon
           className={
             cn(

@@ -37,8 +37,8 @@ interface Iprops {
 export const RoomsListHeader:FC<Iprops> = ({
   openMenuFn
 }) => {
-  const classes = useStyles();
-  const testFn  = useDebounceFn((str: string) => {console.log(str)}, 500);
+  const classes = useStyles()
+  const testFn  = useDebounceFn((str: string) => {console.log(str)}, 500)
 
   return (
     <div className={classes.roomListHeader}>
@@ -48,7 +48,12 @@ export const RoomsListHeader:FC<Iprops> = ({
         </IconButton>
       </div>
       <div className={classes.search}>
-        <SearchInput className={classes.searchInput} change={testFn}/>
+        <SearchInput
+          className={classes.searchInput}
+          change={testFn}
+          start={() => {console.log('start')}}
+          end={() => console.log('end')}
+        />
       </div>
     </div>
   )
