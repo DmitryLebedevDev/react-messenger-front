@@ -68,11 +68,14 @@ const useStyles = makeStyles({
 interface Iprops {
   className?: string,
   start?: () => void,
+  change?: (info: {
+    q: string,
+    isCancel: (q: string) => boolean
+  }) => void,
   end?: () => void
-  change?: (q: string) => void
 }
 
-export const SearchInput:FC<Iprops> = ({className, start, end, change}) => {
+export const SearchInput:FC<Iprops> = ({className, start, change, end}) => {
   const inputRef = useRef<HTMLInputElement|null>(null)
   const [value, setValue] = useState('')
   const [isStartInput, setIsStartInput] = useState(false)
@@ -85,13 +88,18 @@ export const SearchInput:FC<Iprops> = ({className, start, end, change}) => {
     setIsStartInput(false)
     end && end()
   }
-  const changeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value)
-    change && change(e.target.value)
+  const changeInput = (
+    {target: {value}}: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setValue(value)
+    change && change({
+      q: value,
+      isCancel: (q: string) => q !== inputRef?.current?.value
+    })
 
-    if(!isStartInput && e.target.value.length === 1)
+    if(!isStartInput && value.length === 1)
       startInput()
-    if(isStartInput && e.target.value.length === 0)
+    if(isStartInput && value.length === 0)
       endInput()
   }
 

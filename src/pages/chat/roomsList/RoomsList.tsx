@@ -4,7 +4,13 @@ import { useStore } from 'effector-react'
 
 import { RoomsListHeader } from './RoomsListHeader'
 import { RoomsListBody } from './RoomsListBody'
-import { $currentRoomsInfo } from '../../../models/rooms'
+import {
+  $currentRoomsInfo,
+  activeSearchRoomsEvent,
+  activeUserRoomsEvent
+} from '../../../models/rooms'
+import { useDebounceFn } from '../../../models/common/hooks/useDebounce'
+import { getCardsRoomsSFx } from '../../../models/rooms/index'
 
 const useStyles = makeStyles({
   roomList: {
@@ -24,12 +30,26 @@ const RoomsListFC:FC<Iprops> = ({
 }) => {
   const { pending, rooms } = useStore($currentRoomsInfo)
 
+  const handleStartSearch = activeSearchRoomsEvent
+  const handleRoomSearch  = useDebounceFn(
+    getCardsRoomsSFx, 500
+  )
+  const handleEndSearch = activeUserRoomsEvent
+
   const classes = useStyles()
 
   return (
     <div className={classes.roomList}>
-      <RoomsListHeader openMenuFn={openMenuFn}/>
-      <RoomsListBody pending={pending} rooms={Object.values(rooms)}/>
+      <RoomsListHeader
+        openMenuFn={openMenuFn}
+        startSearch={handleStartSearch}
+        changeSearch={handleRoomSearch}
+        endSearch={handleEndSearch}
+      />
+      <RoomsListBody
+        pending={pending}
+        rooms={Object.values(rooms)}
+      />
     </div>
   )
 }

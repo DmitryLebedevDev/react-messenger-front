@@ -28,10 +28,13 @@ forward({
 })
 
 getCardsRoomsSFx.use(async ({q, isCancel}) => {
-  const cardsRooms = getSimilarRoomsReq(q);
-  isCancel(q) && new CancelEffectError();
+  if(q) {
+    const cardsRooms = await getSimilarRoomsReq(q)
+    if(isCancel(q)) throw new CancelEffectError()
 
-  return cardsRooms;
+    return cardsRooms
+  }
+  throw new CancelEffectError()
 })
 forward({
   from: getCardsRoomsSFx.doneData,
