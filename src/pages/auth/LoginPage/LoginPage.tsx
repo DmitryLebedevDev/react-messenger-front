@@ -34,7 +34,7 @@ export const LoginPage:FC = () => {
     initialValues: loginDataInit,
     validationSchema: loginSchema,
     onSubmit: loginFx,
-  });
+  })
 
   const createFormField = useFormikInput<
     keyof typeof loginDataInit

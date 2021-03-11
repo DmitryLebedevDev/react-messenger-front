@@ -2,7 +2,14 @@ import axios, { AxiosResponse } from 'axios'
 import { IcardRoom } from '../models/rooms/intarface'
 
 import { Iuser } from '../models/user/interface'
-import { IloginDataReq, IloginDataRes, IquickRegistrationDataReq, IquickRegistrationDataRes, IregistrationDataReq, IregistrationDataRes } from './api.interface'
+import {
+  IloginDataReq,
+  IloginDataRes,
+  IquickRegistrationDataReq,
+  IquickRegistrationDataRes,
+  IregistrationDataReq,
+  IregistrationDataRes
+} from './api.interface'
 
 const api = axios.create({
   baseURL: process.env.REACT_APP_BASE_URL

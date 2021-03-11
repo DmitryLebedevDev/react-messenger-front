@@ -1,4 +1,4 @@
-import { StyleRules } from "@material-ui/core/styles/withStyles";
+import { StyleRules } from "@material-ui/core/styles/withStyles"
 
 const css = {
   form: {

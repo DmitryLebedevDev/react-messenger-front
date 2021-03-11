@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useState } from "react"
 
-export const useDebounceFn = <A extends any[], R>
+export const useDebounceFn = <A extends any[]>
 (func: (...args: A) => any, milliseconds: number) => {
-  const [timerId, setTimerId] = useState<NodeJS.Timeout>(0 as any);
+  const [timerId, setTimerId] = useState<NodeJS.Timeout>(0 as any)
 
   return (...args: A): void => {
-    clearTimeout(timerId);
-    setTimerId(setTimeout(() => func(...args), milliseconds));
+    clearTimeout(timerId)
+    setTimerId(setTimeout(() => func(...args), milliseconds))
   };
 }

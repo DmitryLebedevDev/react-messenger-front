@@ -1,3 +1,3 @@
-import {} from 'jest';
+import {} from 'jest'
 
-test('testing authFx...', () => {});
+test('testing authFx...', () => {})

@@ -17,7 +17,7 @@ test('testing $user init state', () => {
 })
 
 test('testing $user set user event', () => {
-  setUserEvent(testUser);
+  setUserEvent(testUser)
 
   expect($user.getState()?.id).toEqual(testUser.id)
   expect($user.getState()?.email).toEqual(testUser.email)

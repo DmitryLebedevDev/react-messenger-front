@@ -10,7 +10,7 @@ interface Iprops {
 }
 
 const RoomsListBodyFC:FC<Iprops> = (props) => {
-  const {pending, rooms} = props;
+  const {pending, rooms} = props
 
   return <div>{
     pending ?

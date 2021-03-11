@@ -15,9 +15,9 @@ const useStyles = makeStyles({
 })
 
 export const Chat:FC = () => {
-  const [isOpenUserMenu, setIsOpenUserMenu] = useState(false);
+  const [isOpenUserMenu, setIsOpenUserMenu] = useState(false)
 
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
     <div className={classes.chat}>

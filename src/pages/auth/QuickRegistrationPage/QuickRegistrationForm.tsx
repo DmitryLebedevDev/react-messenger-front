@@ -39,7 +39,7 @@ export const QuickRegistrationForm:FC<Iprops> = (
     initialValues: quickRegistrationDataInit,
     validationSchema: quickRegistrationSchema,
     onSubmit: quickRegistrationFx,
-  });
+  })
 
   const createFormField = useFormikInput<
     keyof typeof quickRegistrationDataInit

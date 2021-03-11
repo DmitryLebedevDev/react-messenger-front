@@ -45,19 +45,19 @@ export const FormHeader = ({variant, pending}: Iprops) => {
         color: '#3f51b5',
         spinerColor: '#f50057',
       }
-      break;
+      break
     case 'registration':
       stylesParams = {
         color: '#3f51b5',
         spinerColor: '#f50057',
       }
-      break;
+      break
     case 'quickRegistrationPage':
       stylesParams = {
         color: '#4caf50',
         spinerColor: '#303f9f'
       }
-    break;
+    break
   }
 
   const classes = useStyles(stylesParams)

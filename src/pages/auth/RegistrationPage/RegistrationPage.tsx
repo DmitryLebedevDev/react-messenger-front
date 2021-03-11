@@ -36,7 +36,7 @@ const registrationSchema = Yup.object().shape({
     .required(textErrorRequiredField),
   repeatPassword: Yup.string()
     .test('match password', 'not match password', function(value) {
-      return this.parent.password === value;
+      return this.parent.password === value
     })
     .required(textErrorRequiredField)
 })
@@ -56,10 +56,10 @@ export const RegistrationPage:FC = () => {
     initialValues: registrationDataInit,
     validationSchema: registrationSchema,
     onSubmit: registrationFx,
-  });
-  const formikRef = useRef(formik);
+  })
+  const formikRef = useRef(formik)
   useEffect(() => {
-    formikRef.current = formik;
+    formikRef.current = formik
   },[formik])
 
   useEffect(() => {

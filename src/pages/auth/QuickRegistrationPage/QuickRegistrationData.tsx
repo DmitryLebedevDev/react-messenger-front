@@ -30,16 +30,16 @@ const useStyles = makeStyles({
 
 export const QuickRegistrationData:FC<Iprops>
 = (props) => {
-  const [isSavedData, setIsSavedData] = useState(false);
+  const [isSavedData, setIsSavedData] = useState(false)
   const saveDataFn = () => {
     copyText(
     `email: ${props.userData.email} ` +
     `password: ${props.userData.password}`
     )
-    setIsSavedData(true);
+    setIsSavedData(true)
   }
 
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
     <div className={cn(classes.form, classes.userDataWrap)}>

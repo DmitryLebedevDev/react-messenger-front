@@ -1,8 +1,8 @@
-import { createEvent } from 'effector';
+import { createEvent } from 'effector'
 import {} from 'jest'
 
-import { createCardsRoomsStore } from '../createCardsRoomsStore';
-import { IcardRoom, Imessage } from '../intarface';
+import { createCardsRoomsStore } from '../createCardsRoomsStore'
+import { IcardRoom, Imessage } from '../intarface'
 
 const testRoom1: IcardRoom = {
   id: 1,
@@ -49,13 +49,13 @@ const {
   addMessageInCardRoomEvent,
   deleteCardsRoomsEvent,
   setCardsRoomsEvent
-} = createCardsRoomsStore();
+} = createCardsRoomsStore()
 
-const clearEvent = createEvent();
-$cardsRoomsStore.reset(clearEvent);
+const clearEvent = createEvent()
+$cardsRoomsStore.reset(clearEvent)
 
 afterEach(() => {
-  clearEvent();
+  clearEvent()
 })
 
 test('createCardsRoomsStore test init state', () => {
@@ -63,30 +63,30 @@ test('createCardsRoomsStore test init state', () => {
     Object.keys(
       $cardsRoomsStore.getState()
     ).length)
-  .toEqual(0);
+  .toEqual(0)
 })
 
 test('createCardsRoomsStore addCardsRoomsEvent', () => {
-  addCardsRoomsEvent([testRoom1]);
+  addCardsRoomsEvent([testRoom1])
 
   expect(
     Object.keys(
       $cardsRoomsStore.getState()
     ).length)
-  .toEqual(1);
+  .toEqual(1)
 
   expect(
     $cardsRoomsStore.getState()
   ).toEqual({1: testRoom1})
 
 
-  addCardsRoomsEvent([testRoom1]);
+  addCardsRoomsEvent([testRoom1])
 
   expect(
     Object.keys(
       $cardsRoomsStore.getState()
     ).length)
-  .toEqual(1);
+  .toEqual(1)
 
   expect(
     $cardsRoomsStore.getState()
@@ -98,20 +98,20 @@ test('createCardsRoomsStore addCardsRoomsEvent', () => {
     Object.keys(
       $cardsRoomsStore.getState()
     ).length)
-  .toEqual(2);
+  .toEqual(2)
 
   expect(
     $cardsRoomsStore.getState()
   ).toEqual({1: testRoom1, 2: testRoom2})
 })
 test('createCardsRoomsStore addCardsRoomsEvent two add', () => {
-  addCardsRoomsEvent([testRoom1, testRoom2]);
+  addCardsRoomsEvent([testRoom1, testRoom2])
 
   expect(
     $cardsRoomsStore.getState()
   ).toEqual({1: testRoom1, 2: testRoom2})
 
-  addCardsRoomsEvent([testRoom1, testRoom2]);
+  addCardsRoomsEvent([testRoom1, testRoom2])
 
   expect(
     $cardsRoomsStore.getState()
@@ -119,7 +119,7 @@ test('createCardsRoomsStore addCardsRoomsEvent two add', () => {
 })
 
 test('createCardsRoomsStore setCardsRoomsEvent', () => {
-  setCardsRoomsEvent([testRoom1]);
+  setCardsRoomsEvent([testRoom1])
   expect(
     $cardsRoomsStore.getState()
   ).toEqual({1: testRoom1})
@@ -130,7 +130,7 @@ test('createCardsRoomsStore setCardsRoomsEvent', () => {
   ).toEqual({2: testRoom2})
 })
 test('createCardsRoomsStore setCardsRoomsEvent two add', () => {
-  setCardsRoomsEvent([testRoom1, testRoom2]);
+  setCardsRoomsEvent([testRoom1, testRoom2])
 
   expect(
     $cardsRoomsStore.getState()
@@ -138,31 +138,31 @@ test('createCardsRoomsStore setCardsRoomsEvent two add', () => {
 })
 
 test('createCardsRoomsStore deleteCardsRoomsEvent', () => {
-  setCardsRoomsEvent([testRoom1, testRoom2]);
+  setCardsRoomsEvent([testRoom1, testRoom2])
 
-  deleteCardsRoomsEvent([1,2]);
-  expect($cardsRoomsStore.getState()).toEqual({});
+  deleteCardsRoomsEvent([1,2])
+  expect($cardsRoomsStore.getState()).toEqual({})
 
-  setCardsRoomsEvent([testRoom1]);
+  setCardsRoomsEvent([testRoom1])
 
-  deleteCardsRoomsEvent([2]);
-  expect($cardsRoomsStore.getState()).toEqual({1: testRoom1});
+  deleteCardsRoomsEvent([2])
+  expect($cardsRoomsStore.getState()).toEqual({1: testRoom1})
 
-  deleteCardsRoomsEvent([1]);
-  expect($cardsRoomsStore.getState()).toEqual({});
+  deleteCardsRoomsEvent([1])
+  expect($cardsRoomsStore.getState()).toEqual({})
 })
 
 test('createCardsRoomsStore addMessageInCardRoomEvent', () => {
-  setCardsRoomsEvent([testRoom1, testRoom2]);
+  setCardsRoomsEvent([testRoom1, testRoom2])
 
-  addMessageInCardRoomEvent(testMessage1InRoom1);
-  expect($cardsRoomsStore.getState()[1].messages).toEqual([testMessage1InRoom1]);
-  expect($cardsRoomsStore.getState()[2].messages).toEqual([]);
+  addMessageInCardRoomEvent(testMessage1InRoom1)
+  expect($cardsRoomsStore.getState()[1].messages).toEqual([testMessage1InRoom1])
+  expect($cardsRoomsStore.getState()[2].messages).toEqual([])
 
-  addMessageInCardRoomEvent(testMessage2InRoom1);
-  expect($cardsRoomsStore.getState()[1].messages).toEqual([testMessage1InRoom1, testMessage2InRoom1]);
+  addMessageInCardRoomEvent(testMessage2InRoom1)
+  expect($cardsRoomsStore.getState()[1].messages).toEqual([testMessage1InRoom1, testMessage2InRoom1])
 
-  addMessageInCardRoomEvent(testMessage1InRoom2);
-  expect($cardsRoomsStore.getState()[1].messages).toEqual([testMessage1InRoom1, testMessage2InRoom1]);
-  expect($cardsRoomsStore.getState()[2].messages).toEqual([testMessage1InRoom2]);
+  addMessageInCardRoomEvent(testMessage1InRoom2)
+  expect($cardsRoomsStore.getState()[1].messages).toEqual([testMessage1InRoom1, testMessage2InRoom1])
+  expect($cardsRoomsStore.getState()[2].messages).toEqual([testMessage1InRoom2])
 })
