@@ -63,7 +63,7 @@ export const loginReq = (data: IloginDataReq) => (
 
 export const getCardsRoomsUserReq = (userId: number) => (
   getDataOfRequest(
-    api.get<IcardRoom[]>(`/room/getUserRoomWidthRole/${userId}`)
+    api.get<IcardRoom[]>(`/room/getUserRoomWRoleMessage/${userId}`)
   )
 )
 export const getSimilarRoomsReq = (nameRoom: string) => (

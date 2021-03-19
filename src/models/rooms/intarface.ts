@@ -17,8 +17,8 @@ export type IcardsRoomsStore = Record<number,IcardRoom>
 export interface Imessage {
   id: number,
   text: string,
-  user: number,
-  room: number
+  userId: number,
+  roomId: number
 }
 
 export interface Irole {

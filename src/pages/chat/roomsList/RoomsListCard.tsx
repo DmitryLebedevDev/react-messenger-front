@@ -20,10 +20,10 @@ const useStyles = makeStyles({
     },
   },
   cardInfo: {
-    display: 'flex',
-    alignItems: 'start',
+    textAlign: 'start',
+    textTransform: 'none',
     height: '100%',
-    overflow: 'hidden'
+    overflow: 'hidden',
   },
   cardInfoTop: {
     alignItems: 'center',
@@ -32,12 +32,29 @@ const useStyles = makeStyles({
     overflow: 'hidden'
   },
   cardInfoTopIcon: {
-    marginBottom: -5
-  }
+    marginRight: '2px',
+    marginBottom: '-5px'
+  },
+  cardInfoBottom: {
+    color: 'var(--secondaryText)',
+    fontSize: '14px',
+    fontWeight: 400,
+    alignItems: 'center',
+    whiteSpace: 'nowrap',
+    textOverflow: 'ellipsis',
+    overflow: 'hidden',
+  },
+  creatorMessage: {
+    color: 'var(--activeText)',
+    marginRight: '2px',
+  },
+  textMessage: {}
 })
 
 
 const RoomsListCardFC:FC<IcardRoom> = (props) => {
+  const lastMessage = props.messages[props.messages.length-1]
+
   const classes = useStyles()
 
   return <Button className={classes.card} fullWidth>
@@ -50,6 +67,12 @@ const RoomsListCardFC:FC<IcardRoom> = (props) => {
       <div className={classes.cardInfoTop}>
         <PeopleIcon className={classes.cardInfoTopIcon}/>{props.name}
       </div>
+      {lastMessage &&
+       <div className={classes.cardInfoBottom}>
+          <span className={classes.creatorMessage}>{lastMessage.userId}</span>
+          <span className={classes.textMessage}>{lastMessage.text}</span>
+       </div>
+      }
     </div>
   </Button>
 }

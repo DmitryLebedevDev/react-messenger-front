@@ -50,7 +50,7 @@ export const createCardsRoomsStore = () => {
   .on(
     addMessageInCardRoomEvent,
     (store, message) => {
-      const cardRoom = store[message.room]
+      const cardRoom = store[message.roomId]
             cardRoom && cardRoom.messages.push(message)
 
       return {...store}

@@ -22,6 +22,9 @@ code {
 :root {
   --primary: #1976d2;
   --secondary: #dc004e;
+  --primaryText: #252529;
+  --activeText: #1E9DE5;
+  --secondaryText: #999999;
   --link: #1EA5E9;
   --border: #E4E3E2;
   --outline-input: #39C3F0;
