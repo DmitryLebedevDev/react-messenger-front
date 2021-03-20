@@ -9,12 +9,12 @@ const useStyles = makeStyles({
     display: 'grid',
     alignItems: 'center',
     gridTemplateColumns: '60px 1fr',
-    height: 66,
+    height: '66px',
   },
   menu: {
     justifySelf: 'center',
     '& svg': {
-      fontSize: 25,
+      fontSize: '25px',
       color: 'var(--icon)',
     },
     '&:hover svg': {
@@ -22,7 +22,7 @@ const useStyles = makeStyles({
     }
   },
   search: {
-    paddingRight: 15,
+    paddingRight: '15px',
   },
   searchInput: {
     width: '100%',

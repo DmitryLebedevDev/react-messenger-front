@@ -5,8 +5,8 @@ import cn from 'classnames'
 const useStyles = makeStyles({
   menu: {
     position: 'absolute',
-    top: 0,
-    left: 0,
+    top: '0px',
+    left: '0px',
     width: '320px',
     height: '100vh',
     background: 'var(--background)',
@@ -21,8 +21,8 @@ const useStyles = makeStyles({
   shadow: {
     visibility: 'hidden',
     position: 'absolute',
-    top: 0,
-    left: 0,
+    top: '0px',
+    left: '0px',
     width: '100vw',
     height: '100vh',
     background: '#7c7c7c00',

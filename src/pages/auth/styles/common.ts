@@ -18,7 +18,7 @@ const css = {
   },
   formFields: {
     '& div + div': {
-      marginTop: 10
+      marginTop: '10px'
     }
   },
   formError: {

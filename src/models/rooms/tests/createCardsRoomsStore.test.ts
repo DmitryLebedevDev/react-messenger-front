@@ -26,21 +26,21 @@ const testRoom2: IcardRoom = {
 }
 const testMessage1InRoom1: Imessage = {
   id: 1,
-  room: 1,
+  roomId: 1,
   text: '123',
-  user: 1
+  userId: 1
 }
 const testMessage2InRoom1: Imessage = {
   id: 1,
-  room: 1,
+  roomId: 1,
   text: '123',
-  user: 2
+  userId: 2
 }
 const testMessage1InRoom2: Imessage = {
   id: 1,
-  room: 2,
+  roomId: 2,
   text: '123',
-  user: 1
+  userId: 1
 }
 
 const {

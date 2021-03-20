@@ -23,15 +23,15 @@ const useStyles = makeStyles({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    width: 40,
-    height: 40,
-    borderRadius: 40,
+    width: '40px',
+    height: '40px',
+    borderRadius: '40px',
     background: color,
     color: iconColor
   }),
   spiner:({spinerColor}: StyleParams) => ({
     position: 'absolute',
-    top: -4,
+    top: '-4px',
     zIndex: 1,
     color: spinerColor
   })

@@ -18,7 +18,7 @@ const useStyles = makeStyles({
       flexShrink: 0,
     },
     '& > * + *': {
-      marginLeft: 15
+      marginLeft: '15px'
     }
   },
   nextStep: {
