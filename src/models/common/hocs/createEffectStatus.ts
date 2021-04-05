@@ -17,7 +17,7 @@ export function createEffectStatus<Params, Done, Fail>(
   const failEvent
     = effect.failData
 
-  const $effectError = restore(failEvent,null);
+  const $effectError = restore(failEvent,null)
         $effectError.reset(effect.done)
 
   const combineEffectState = (store: typeof $outStore) => combine({

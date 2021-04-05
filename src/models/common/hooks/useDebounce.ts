@@ -7,5 +7,5 @@ export const useDebounceFn = <A extends any[]>
   return (...args: A): void => {
     clearTimeout(timerId)
     setTimerId(setTimeout(() => func(...args), milliseconds))
-  };
+  }
 }
