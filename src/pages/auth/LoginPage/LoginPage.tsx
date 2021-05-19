@@ -44,7 +44,7 @@ export const LoginPage:FC = () => {
 
   return (
     <form className={classes.form} onSubmit={formik.handleSubmit}>
-      <FormHeader pending={pending} variant="login"/>
+      <FormHeader pending={pending} variant='login'/>
       <div className={classes.formFields}>
         {createFormField('email', {label: 'Email'})}
         {createFormField('password', {
@@ -58,7 +58,7 @@ export const LoginPage:FC = () => {
         <div className={classes.formError}>incorrect login or email</div>
       }
       <div className={classes.formButtons}>
-        <Button variant='contained' color='primary' type="submit">
+        <Button variant='contained' color='primary' type='submit'>
           Log in
         </Button>
         <Link to={'/quickRegistration'}>
@@ -67,7 +67,7 @@ export const LoginPage:FC = () => {
           </Button>
         </Link>
         <Link to={'/registration'}>
-          <Button color="primary">
+          <Button color='primary'>
             registration
           </Button>
         </Link>

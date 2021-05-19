@@ -97,7 +97,7 @@ export const RegistrationPage:FC = () => {
         <div className={classes.formError}>{error.message}</div>
       }
       <div className={classes.formButtons}>
-        <Button variant='contained' color='primary' type="submit">
+        <Button variant='contained' color='primary' type='submit'>
           Sign up
         </Button>
         <Link to={'/login'}>

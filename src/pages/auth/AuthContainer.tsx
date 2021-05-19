@@ -9,7 +9,7 @@ import { WhiteWindow } from './components/WhiteWindow'
 
 export const AuthContainer:FC = () => {
   return (
-    <AuthBg content="center">
+    <AuthBg content='center'>
       <WhiteWindow>
         <Route exact path='/login' component={LoginPage}/>
         <Route exact path='/quickRegistration' component={QuickRegistrationPage}/>

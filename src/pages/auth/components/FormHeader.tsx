@@ -29,7 +29,7 @@ const useStyles = makeStyles({
     background: color,
     color: iconColor
   }),
-  spiner:({spinerColor}: StyleParams) => ({
+  spinner:({spinerColor}: StyleParams) => ({
     position: 'absolute',
     top: '-4px',
     zIndex: 1,
@@ -74,8 +74,8 @@ export const FormHeader = ({variant, pending}: Iprops) => {
       {
         pending &&
         <CircularProgress
-          className={classes.spiner}
-          size="48px"
+          className={classes.spinner}
+          size='48px'
         />
       }
     </div>

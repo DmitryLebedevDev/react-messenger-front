@@ -9,7 +9,7 @@ import {
   activeSearchRoomsEvent,
   activeUserRoomsEvent
 } from '../../../models/rooms'
-import { useDebounceFn } from '../../../models/common/hooks/useDebounce'
+import { useDebounceFn } from '../../../common/hooks/useDebounce'
 import { getCardsRoomsSFx } from '../../../models/rooms/index'
 
 const useStyles = makeStyles({
