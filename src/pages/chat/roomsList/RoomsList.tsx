@@ -10,7 +10,7 @@ import {
   activeUserRoomsEvent
 } from '../../../models/rooms'
 import { useDebounceFn } from '../../../common/hooks/useDebounce'
-import { getCardsRoomsSFx } from '../../../models/rooms/index'
+import { getCardsRoomsSFx } from '../../../models/rooms'
 
 const useStyles = makeStyles({
   roomList: {
