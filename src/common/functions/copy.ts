@@ -1,9 +1,9 @@
 export const copyText = (text: string) => {
-  var input = document.createElement('input')
+  const input = document.createElement('input')
   input.setAttribute('value', text)
   document.body.appendChild(input)
   input.select()
-  var result = document.execCommand('copy')
+  const result = document.execCommand('copy')
   document.body.removeChild(input)
   return result
 }
