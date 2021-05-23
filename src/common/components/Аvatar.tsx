@@ -20,7 +20,7 @@ interface Iprops {
   avatarId?: string,
 }
 
-const АvatarFC: FC<Iprops> = (props) => {
+const AvatarFC: FC<Iprops> = (props) => {
   const classes = useStyles(props.size)
 
   return (
@@ -33,4 +33,4 @@ const АvatarFC: FC<Iprops> = (props) => {
   )
 }
 
-export const Аvatar = React.memo(АvatarFC)
+export const Avatar = React.memo(AvatarFC)

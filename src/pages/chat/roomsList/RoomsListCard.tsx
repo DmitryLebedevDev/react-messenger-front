@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import { Button, makeStyles } from '@material-ui/core'
 import PeopleIcon from '@material-ui/icons/People'
 
-import { Аvatar } from '../../../common/components/Аvatar'
+import { Avatar } from '../../../common/components/Аvatar'
 import { IcardRoom } from '../../../models/rooms/intarface'
 
 const useStyles = makeStyles({
@@ -58,7 +58,7 @@ const RoomsListCardFC:FC<IcardRoom> = (props) => {
   const classes = useStyles()
 
   return <Button className={classes.card} fullWidth>
-    <Аvatar
+    <Avatar
       name={props.name}
       avatarId={props.avatarId}
       size={52}
